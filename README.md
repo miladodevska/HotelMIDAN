@@ -1,2 +1,2 @@
-# HotelWP
+# HotelMIDAN
 Seminarska WP
