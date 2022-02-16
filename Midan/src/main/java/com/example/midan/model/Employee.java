@@ -15,14 +15,16 @@ public class Employee {
 
     private String surname;
 
-    private int age;
-    private int workExperience;
+    private Integer age;
+
+    private Integer workExperience;
+
     private String department;
 
     public Employee() {
     }
 
-    public Employee(String name, String surname, int age, int workExperience, String department) {
+    public Employee(String name, String surname, Integer age, Integer workExperience, String department) {
         this.name = name;
         this.surname = surname;
         this.age = age;

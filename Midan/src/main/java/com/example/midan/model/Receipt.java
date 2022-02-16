@@ -8,9 +8,9 @@ public class Receipt {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int roomNumber;
+    private Integer roomNumber;
 
-    private double price;
+    private Double price;
 
     public Receipt(){
 

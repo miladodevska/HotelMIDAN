@@ -14,9 +14,9 @@ public class Guest {
 
     private String surname;
 
-    private int roomNumber;
+    private Integer roomNumber;
 
-    private int resides; //vreme na prestojuvanje vo denovi
+    private Integer resides; //vreme na prestojuvanje vo denovi
 
     @Enumerated
     private GuestType type; // Tip na gostin
@@ -24,7 +24,7 @@ public class Guest {
     @OneToOne
     private Receipt receipt;
 
-    private int numVisits = 0;
+    private Integer numVisits = 0;
 
     public Guest() {
     }
