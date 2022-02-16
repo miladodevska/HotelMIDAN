@@ -13,6 +13,5 @@ public class Receipt {
     private Double price;
 
     public Receipt(){
-
     }
 }

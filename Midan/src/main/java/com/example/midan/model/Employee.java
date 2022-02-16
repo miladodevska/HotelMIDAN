@@ -7,6 +7,19 @@ import javax.persistence.Id;
 
 @Entity
 public class Employee {
+
+    public Employee() {
+    }
+
+    public Employee(String name, String surname, String email, Integer age, Integer workExperience, String department) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.age = age;
+        this.workExperience = workExperience;
+        this.department = department;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,20 +28,12 @@ public class Employee {
 
     private String surname;
 
+    private String email;
+
     private Integer age;
 
     private Integer workExperience;
 
     private String department;
 
-    public Employee() {
-    }
-
-    public Employee(String name, String surname, Integer age, Integer workExperience, String department) {
-        this.name = name;
-        this.surname = surname;
-        this.age = age;
-        this.workExperience = workExperience;
-        this.department = department;
-    }
 }
