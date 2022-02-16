@@ -1,21 +1,21 @@
 package com.example.midan.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.example.midan.model.Enumerations.OfferType;
+
+import javax.persistence.*;
 
 @Entity
 public class Offer {
     @Id
-    @GeneratedValue
-    Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    String offerFor; // za kogo ponuda
-    String offerName;
+    private String offerFor; // za kogo ponuda
+
+    private String offerName;
+
     @Enumerated
-    OfferType type;
-
+    private OfferType type;
 
     public Offer() {
     }

@@ -1,34 +1,39 @@
 package com.example.midan.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.example.midan.model.Enumerations.GuestType;
+
+import javax.persistence.*;
 
 @Entity
 public class Guest {
     @Id
-    @GeneratedValue
-    Long QuestId;
-    String name;
-    String surname;
-    int roomNumber;
-    int resides; //vreme na prestojuvanje vo denovi
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+
+    private String surname;
+
+    private int roomNumber;
+
+    private int resides; //vreme na prestojuvanje vo denovi
+
     @Enumerated
-    GuestType type; // Tip na gostin
-    int brPoseti = 0;
+    private GuestType type; // Tip na gostin
+
+    @OneToOne
+    private Receipt receipt;
+
+    private int numVisits = 0;
 
     public Guest() {
     }
 
     void isVip() //ako br poseti >= 5 , gostin -> vip
     {
-        if(brPoseti>=5 || resides >= 30)
-        {
+        if (numVisits >= 5 || resides >= 30) {
             this.type = GuestType.VIP;
-        }
-        else
-        {
+        } else {
             this.type = GuestType.NORMAL;
         }
     }

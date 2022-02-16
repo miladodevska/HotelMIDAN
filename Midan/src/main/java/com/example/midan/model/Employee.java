@@ -2,19 +2,22 @@ package com.example.midan.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Employee {
     @Id
-    @GeneratedValue
-    Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    String name;
-    String surname;
-    int age;
-    int workExperience;
-    String department;
+    private String name;
+
+    private String surname;
+
+    private int age;
+    private int workExperience;
+    private String department;
 
     public Employee() {
     }
