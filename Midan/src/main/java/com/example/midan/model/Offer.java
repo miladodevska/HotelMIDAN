@@ -24,6 +24,6 @@ public class Offer {
 
     private String offerName;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private OfferType type;
 }

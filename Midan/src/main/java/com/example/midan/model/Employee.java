@@ -1,9 +1,8 @@
 package com.example.midan.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.example.midan.model.Enumerations.DepartmentType;
+
+import javax.persistence.*;
 
 @Entity
 public class Employee {
@@ -11,7 +10,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Long embg, String name, String surname, String email, Integer phoneNumber, Integer age, String address, Integer workExperience, String department) {
+    public Employee(Long embg, String name, String surname, String email, Integer phoneNumber, Integer age, String address, Integer workExperience, DepartmentType department) {
         this.embg = embg;
         this.name = name;
         this.surname = surname;
@@ -43,6 +42,7 @@ public class Employee {
 
     private Integer workExperience;
 
-    private String department;
+    @Enumerated(EnumType.STRING)
+    private DepartmentType department;
 
 }

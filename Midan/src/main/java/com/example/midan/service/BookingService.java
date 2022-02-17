@@ -8,8 +8,12 @@ import java.util.List;
 
 public interface BookingService {
     List<Booking> listAllEmployees();
+
     Booking findById(Long id);
+
     Booking create(Integer days, LocalDate date);
+
     Booking update(Long id, Integer days, LocalDate date);
+
     Booking delete(Long id);
 }

@@ -4,6 +4,15 @@ import javax.persistence.*;
 
 @Entity
 public class Receipt {
+
+    public Receipt(){
+    }
+
+    public Receipt(Integer roomNumber, Double price){
+        this.roomNumber = roomNumber;
+        this.price = price;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -12,6 +21,5 @@ public class Receipt {
 
     private Double price;
 
-    public Receipt(){
-    }
+
 }

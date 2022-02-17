@@ -38,7 +38,7 @@ public class Guest {
 
     private Integer resides; //vreme na prestojuvanje vo denovi
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private GuestType type; // Tip na gostin
 
     @OneToOne
