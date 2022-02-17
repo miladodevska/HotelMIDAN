@@ -35,7 +35,13 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public Booking update(Long id, LocalDate checkIn, LocalDate checkOut, LocalDate bookingDate, boolean paymentStatus, boolean bookingStatus) {
-        return null;
+        Booking booking = this.findById(id);
+        booking.setCheckIn(checkIn);
+        booking.setCheckOut(checkOut);
+        booking.setBookingDate(bookingDate);
+        booking.setPaymentStatus(paymentStatus);
+        booking.setBookingStatus(bookingStatus);
+        return this.bookingRepository.save(booking);
     }
 
     @Override
