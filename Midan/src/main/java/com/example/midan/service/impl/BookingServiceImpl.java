@@ -28,8 +28,8 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public Booking create(LocalDate checkIn, LocalDate checkOut, LocalDate bookingDate, boolean paymentStatus, boolean bookingStatus) {
-        Booking product = new Booking(checkIn, checkOut, bookingDate, paymentStatus, bookingStatus);
-        return this.bookingRepository.save(product);
+        Booking booking = new Booking(checkIn, checkOut, bookingDate, paymentStatus, bookingStatus);
+        return this.bookingRepository.save(booking);
     }
 
     @Override
