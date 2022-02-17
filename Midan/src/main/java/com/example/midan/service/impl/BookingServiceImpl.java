@@ -46,6 +46,8 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public Booking delete(Long id) {
-        return null;
+        Booking booking = this.findById(id);
+        this.bookingRepository.delete(booking);
+        return booking;
     }
 }
