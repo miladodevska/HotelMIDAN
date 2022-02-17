@@ -17,6 +17,9 @@ public class Receipt {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @OneToOne
+    private Guest guest;
+
     private Integer roomNumber;
 
     private Double price;
@@ -24,6 +27,10 @@ public class Receipt {
     public Long getId() {return id;}
 
     public void setId(Long id) {this.id = id;}
+
+    public Guest getGuest() {return guest;}
+
+    public void setGuest(Guest guest) {this.guest = guest;}
 
     public Integer getRoomNumber() {return roomNumber;}
 
