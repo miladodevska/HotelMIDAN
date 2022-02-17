@@ -6,6 +6,16 @@ import javax.persistence.*;
 
 @Entity
 public class Offer {
+
+    public Offer() {
+    }
+
+    public Offer(String offerFor, String offerName, OfferType type) {
+        this.offerFor = offerFor;
+        this.offerName = offerName;
+        this.type = type;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,7 +26,4 @@ public class Offer {
 
     @Enumerated
     private OfferType type;
-
-    public Offer() {
-    }
 }

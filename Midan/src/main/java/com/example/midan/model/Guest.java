@@ -10,10 +10,12 @@ public class Guest {
     public Guest() {
     }
 
-    public Guest(Long id, String name, String surname, String email) {
+    public Guest(String name, String surname, String email, Integer phoneNumber, String gender) {
         this.name = name;
         this.surname = surname;
         this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.gender = gender;
     }
 
     @Id
@@ -25,6 +27,10 @@ public class Guest {
     private String surname;
 
     private String email;
+
+    private Integer phoneNumber;
+
+    private String gender;
 
     private Integer roomNumber;
     // spored mene, ne treba da ima atribut roomNumber u klasata,
@@ -39,6 +45,7 @@ public class Guest {
     private Receipt receipt;
 
     private Integer numVisits = 0;
+
 
     void isVip() //ako br poseti >= 5 , gostin -> vip
     {

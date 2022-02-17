@@ -11,10 +11,12 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(String name, String surname, String email, Integer age, Integer workExperience, String department) {
+    public Employee(Long embg, String name, String surname, String email, Integer phoneNumber, Integer age, Integer workExperience, String department) {
+        this.embg = embg;
         this.name = name;
         this.surname = surname;
         this.email = email;
+        this.phoneNumber = phoneNumber;
         this.age = age;
         this.workExperience = workExperience;
         this.department = department;
@@ -24,11 +26,15 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private Long embg;
+
     private String name;
 
     private String surname;
 
     private String email;
+
+    private Integer phoneNumber;
 
     private Integer age;
 
