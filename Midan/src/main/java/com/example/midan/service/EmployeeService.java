@@ -10,6 +10,8 @@ public interface EmployeeService {
 
     Employee findById(Long id);
 
+    Employee findByName(String name);
+
     Employee create(Long embg, String name, String surname, String email, Integer phoneNumber, Integer age, String address, Integer workExperience, String department);
 
     Employee update(Long id, Long embg, String name, String surname, String email, Integer phoneNumber, Integer age, String address, Integer workExperience, String department);
