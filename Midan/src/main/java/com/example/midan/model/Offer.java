@@ -26,4 +26,20 @@ public class Offer {
 
     @Enumerated(EnumType.STRING)
     private OfferType type;
+
+    public Long getId() {return id;}
+
+    public void setId(Long id) {this.id = id;}
+
+    public String getOfferFor() {return offerFor;}
+
+    public void setOfferFor(String offerFor) {this.offerFor = offerFor;}
+
+    public String getOfferName() {return offerName;}
+
+    public void setOfferName(String offerName) {this.offerName = offerName;}
+
+    public OfferType getType() {return type;}
+
+    public void setType(OfferType type) {this.type = type;}
 }

@@ -7,13 +7,14 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface BookingService {
+
     List<Booking> listAllEmployees();
 
     Booking findById(Long id);
 
-    Booking create(Integer days, LocalDate date);
+    Booking create(LocalDate checkIn, LocalDate checkOut, LocalDate bookingDate, boolean paymentStatus, boolean bookingStatus);
 
-    Booking update(Long id, Integer days, LocalDate date);
+    Booking update(Long id, LocalDate checkIn, LocalDate checkOut, LocalDate bookingDate, boolean paymentStatus, boolean bookingStatus);
 
     Booking delete(Long id);
 }

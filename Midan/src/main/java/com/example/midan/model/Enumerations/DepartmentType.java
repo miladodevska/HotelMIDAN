@@ -2,6 +2,7 @@ package com.example.midan.model.Enumerations;
 
 public enum DepartmentType {
     HOUSEKEEPING,
+    RECEPTION,
     FOOD,
     BEVERAGE,
     KITCHEN,
