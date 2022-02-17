@@ -1,4 +1,4 @@
-# HotelMIDAN
+# Hotel MIDAN
 Seminarska WP
 
 MORE DETAILS HERE :
