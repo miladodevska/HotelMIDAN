@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface BookingService {
 
-    List<Booking> listAllEmployees();
+    List<Booking> listAllBookings();
 
     Booking findById(Long id);
 

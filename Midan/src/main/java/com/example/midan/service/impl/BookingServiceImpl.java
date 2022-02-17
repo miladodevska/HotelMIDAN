@@ -17,14 +17,13 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public List<Booking> listAllEmployees() {
+    public List<Booking> listAllBookings() {
         return this.bookingRepository.findAll();
     }
 
     @Override
     public Booking findById(Long id) {
         return this.bookingRepository.findById(id).orElseThrow(InvalidBookingIdException::new);
-
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.example.midan.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Receipt {
@@ -8,8 +9,9 @@ public class Receipt {
     public Receipt(){
     }
 
-    public Receipt(Integer roomNumber, Double price){
-        this.roomNumber = roomNumber;
+    public Receipt(Guest guest, List<Room> room, Double price){
+        this.guest = guest;
+        this.room = room;
         this.price = price;
     }
 
@@ -20,7 +22,8 @@ public class Receipt {
     @OneToOne
     private Guest guest;
 
-    private Integer roomNumber;
+    @OneToMany
+    private List<Room> room;
 
     private Double price;
 
@@ -32,9 +35,9 @@ public class Receipt {
 
     public void setGuest(Guest guest) {this.guest = guest;}
 
-    public Integer getRoomNumber() {return roomNumber;}
+    public List<Room> getRoom() {return room;}
 
-    public void setRoomNumber(Integer roomNumber) {this.roomNumber = roomNumber;}
+    public void setRoom(List<Room> room) {this.room = room;}
 
     public Double getPrice() {return price;}
 
