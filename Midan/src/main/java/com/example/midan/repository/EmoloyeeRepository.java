@@ -1,4 +1,7 @@
 package com.example.midan.repository;
 
-public interface EmoloyeeRepository {
+import com.example.midan.model.Employee;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface EmoloyeeRepository extends JpaRepository<Employee, Long> {
 }

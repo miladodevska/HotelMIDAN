@@ -1,4 +1,7 @@
 package com.example.midan.repository;
 
-public interface OfferRepository {
+import com.example.midan.model.Offer;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface OfferRepository extends JpaRepository<Offer, Long> {
 }
