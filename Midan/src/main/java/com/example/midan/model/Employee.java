@@ -11,13 +11,14 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Long embg, String name, String surname, String email, Integer phoneNumber, Integer age, Integer workExperience, String department) {
+    public Employee(Long embg, String name, String surname, String email, Integer phoneNumber, Integer age, String address, Integer workExperience, String department) {
         this.embg = embg;
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.age = age;
+        this.address = address;
         this.workExperience = workExperience;
         this.department = department;
     }
@@ -37,6 +38,8 @@ public class Employee {
     private Integer phoneNumber;
 
     private Integer age;
+
+    private String address;
 
     private Integer workExperience;
 
