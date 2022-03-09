@@ -1,16 +1,17 @@
 package com.example.midan.model;
 
 import com.example.midan.model.Enumerations.DepartmentType;
+import lombok.Data;
 
 import javax.persistence.*;
-
+@Data
 @Entity
 public class Employee {
 
     public Employee() {
     }
 
-    public Employee(Long embg, String name, String surname, String email, Integer phoneNumber, Integer age, String address, Integer workExperience, DepartmentType department) {
+    public Employee(Long embg, String name, String surname, String email, String phoneNumber, Integer age, String address, Integer workExperience, DepartmentType department) {
         this.embg = embg;
         this.name = name;
         this.surname = surname;
@@ -34,13 +35,13 @@ public class Employee {
 
     private String email;
 
-    private Integer phoneNumber;
+    private String phoneNumber;
 
     private Integer age;
 
     private String address;
 
-    private Integer workExperience;
+    private Integer workExperience; //?
 
     @Enumerated(EnumType.STRING)
     private DepartmentType department;
@@ -65,10 +66,6 @@ public class Employee {
 
     public void setEmail(String email) {this.email = email;}
 
-    public Integer getPhoneNumber() {return phoneNumber;}
-
-    public void setPhoneNumber(Integer phoneNumber) {this.phoneNumber = phoneNumber;}
-
     public Integer getAge() {return age;}
 
     public void setAge(Integer age) {this.age = age;}
@@ -84,4 +81,12 @@ public class Employee {
     public DepartmentType getDepartment() {return department;}
 
     public void setDepartment(DepartmentType department) {this.department = department;}
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 }

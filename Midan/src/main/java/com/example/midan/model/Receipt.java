@@ -1,8 +1,11 @@
 package com.example.midan.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.List;
 
+@Data
 @Entity
 public class Receipt {
 
@@ -23,7 +26,7 @@ public class Receipt {
     private Guest guest;
 
     @OneToMany
-    private List<Room> room;
+    private List<Room> room; //dali sigurno treba ova?
 
     private Double price;
 

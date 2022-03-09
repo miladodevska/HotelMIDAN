@@ -1,9 +1,11 @@
 package com.example.midan.model;
 
 import com.example.midan.model.Enumerations.OfferType;
+import lombok.Data;
 
 import javax.persistence.*;
 
+@Data
 @Entity
 public class Offer {
 

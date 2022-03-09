@@ -11,6 +11,8 @@ public interface OfferService {
 
     Offer findById(Long id);
 
+    Offer findByName();
+
     Offer create(String offerFor, String offerName, OfferType type);
 
     Offer update(Long id, String offerFor, String offerName, OfferType type);

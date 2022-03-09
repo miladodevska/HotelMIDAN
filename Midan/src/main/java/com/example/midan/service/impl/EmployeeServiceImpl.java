@@ -40,13 +40,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee create(Long embg, String name, String surname, String email, Integer phoneNumber, Integer age, String address, Integer workExperience, DepartmentType department) {
+    public Employee create(Long embg, String name, String surname, String email, String phoneNumber, Integer age, String address, Integer workExperience, DepartmentType department) {
         Employee employee = new Employee(embg, name, surname, email, phoneNumber, age, address, workExperience, department);
         return this.employeeRepository.save(employee);
     }
 
     @Override
-    public Employee update(Long id, Long embg, String name, String surname, String email, Integer phoneNumber, Integer age, String address, Integer workExperience, DepartmentType department) {
+    public Employee update(Long id, Long embg, String name, String surname, String email, String phoneNumber, Integer age, String address, Integer workExperience, DepartmentType department) {
         Employee employee = this.findById(id);
         employee.setEmbg(embg);
         employee.setName(name);

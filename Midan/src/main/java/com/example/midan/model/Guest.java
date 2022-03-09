@@ -1,16 +1,25 @@
 package com.example.midan.model;
 
 import com.example.midan.model.Enumerations.GuestType;
+import lombok.Data;
 
 import javax.persistence.*;
 
+@Data
 @Entity
 public class Guest {
 
     public Guest() {
     }
 
-    public Guest(String name, String surname, String email, Integer phoneNumber, String gender) {
+    public Guest(String name, String surname, String email, GuestType type) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.type = type;
+    }
+
+    public Guest(String name, String surname, String email, String phoneNumber, String gender) {
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -28,7 +37,7 @@ public class Guest {
 
     private String email;
 
-    private Integer phoneNumber;
+    private String phoneNumber;
 
     private String gender;
 
@@ -41,7 +50,7 @@ public class Guest {
     @Enumerated(EnumType.STRING)
     private GuestType type; // Tip na gostin
 
-    @OneToOne
+    @OneToOne //tuka mozda manytoone
     private Receipt receipt;
 
     private Integer numVisits = 0;
@@ -49,11 +58,13 @@ public class Guest {
 
     void isVip() //ako br poseti >= 5 , gostin -> vip
     {
-        if (numVisits >= 5 || resides >= 30) {
-            this.type = GuestType.VIP;
-        } else {
-            this.type = GuestType.NORMAL;
-        }
+//        if (numVisits >= 5 || resides >= 30) {
+//            this.type = GuestType.VIP;
+//        } else {
+//            this.type = GuestType.NORMAL;
+//        }
+
+        this.type = (numVisits >= 5 || resides >= 30) ? GuestType.VIP : GuestType.NORMAL;
     }
 
     public Long getId() {return id;}
@@ -72,9 +83,13 @@ public class Guest {
 
     public void setEmail(String email) {this.email = email;}
 
-    public Integer getPhoneNumber() {return phoneNumber;}
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
 
-    public void setPhoneNumber(Integer phoneNumber) {this.phoneNumber = phoneNumber;}
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
     public String getGender() {return gender;}
 

@@ -16,5 +16,5 @@ public interface GuestService {
 
     Guest update(Long id, String name, String surname, String email, GuestType type);
 
-    Guest delete(Long id);
+    void delete(Long id);
 }

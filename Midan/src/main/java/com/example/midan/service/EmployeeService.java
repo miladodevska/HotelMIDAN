@@ -15,9 +15,9 @@ public interface EmployeeService {
 
     Employee findByEmbg(Long embg);
 
-    Employee create(Long embg, String name, String surname, String email, Integer phoneNumber, Integer age, String address, Integer workExperience, DepartmentType department);
+    Employee create(Long embg, String name, String surname, String email, String phoneNumber, Integer age, String address, Integer workExperience, DepartmentType department);
 
-    Employee update(Long id, Long embg, String name, String surname, String email, Integer phoneNumber, Integer age, String address, Integer workExperience, DepartmentType department);
+    Employee update(Long id, Long embg, String name, String surname, String email, String phoneNumber, Integer age, String address, Integer workExperience, DepartmentType department);
 
     Employee delete(Long id);
 }
