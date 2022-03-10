@@ -30,19 +30,5 @@ public class Receipt {
 
     private Double price;
 
-    public Long getId() {return id;}
 
-    public void setId(Long id) {this.id = id;}
-
-    public Guest getGuest() {return guest;}
-
-    public void setGuest(Guest guest) {this.guest = guest;}
-
-    public List<Room> getRoom() {return room;}
-
-    public void setRoom(List<Room> room) {this.room = room;}
-
-    public Double getPrice() {return price;}
-
-    public void setPrice(Double price) {this.price = price;}
 }
