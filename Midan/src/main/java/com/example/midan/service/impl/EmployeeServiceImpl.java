@@ -1,9 +1,6 @@
 package com.example.midan.service.impl;
-
-import com.example.midan.model.Booking;
 import com.example.midan.model.Employee;
 import com.example.midan.model.Enumerations.DepartmentType;
-import com.example.midan.model.Exceptions.InvalidBookingIdException;
 import com.example.midan.model.Exceptions.InvalidEmployeeIdException;
 import com.example.midan.repository.EmployeeRepository;
 import com.example.midan.service.EmployeeService;
@@ -31,12 +28,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee findByNameAndSurname(String name, String surname) {
-        return null;
+        return this.employeeRepository.findByNameAndSurname(name, surname);
     }
 
     @Override
     public Employee findByEmbg(Long embg) {
-        return null;
+        return this.employeeRepository.findByEmbg(embg);
     }
 
     @Override
