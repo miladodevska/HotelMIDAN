@@ -30,60 +30,56 @@ public class OfferController {
     }
 
     @GetMapping
-    public String getOfferPage(@RequestParam(required = false) String error, Model model){
+    public String getOfferPage(@RequestParam(required = false) String error, Model model) {
         if (error != null && !error.isEmpty()) {
             model.addAttribute("hasError", true);
             model.addAttribute("error", error);
         }
-        List<Offer> offers = this.offerService.listallOffers();
+        List<Offer> offers = this.offerService.listAllOffers();
         model.addAttribute("offers", offers);
-        model.addAttribute("bodyContent", "offers"); //ako znam sho e ova ve chastam
-        return ""; //TODO
+        model.addAttribute("bodyContent", "offers");
+        return "master-template";
     }
 
     @DeleteMapping("/delete/{id}")
-    public String deleteOffer(@PathVariable Long id){
+    public String deleteOffer(@PathVariable Long id) {
         this.offerService.delete(id);
         return "redirect:/offers";
     }
 
-    @GetMapping("/edit-form/{id}") //edit-form???
-    public String editOfferPage(@PathVariable Long id, Model model){
-        if (this.offerService.findById(id)!=null){ //? nemase isPresent()
+    @GetMapping("/edit/{id}")
+    public String editOfferPage(@PathVariable Long id, Model model) {
+        if (this.offerService.findById(id) != null) { //? nemase isPresent() -- ne go dava u auto complete, znaci ne mozeme da stavime kje javuva greska
             Offer offer = this.offerService.findById(id);
             List<Room> rooms = this.roomService.listAllRooms();
-            List<Guest> guests= this.guestService.listAllGuests();
+            List<Guest> guests = this.guestService.listAllGuests();
             model.addAttribute("rooms", rooms);
             model.addAttribute("guests", guests);
             model.addAttribute("offer", offer);
             model.addAttribute("bodyContent", "add-offer");
-            return ""; //TODO
+            return "master-template";
         }
         return "redirect:/offers?error=OfferNotFound";
     }
 
     @GetMapping("/add-form")
-   // @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public String addOfferPage(Model model){
+    // @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String addOfferPage(Model model) {
         List<Room> rooms = this.roomService.listAllRooms();
-        List<Guest> guests= this.guestService.listAllGuests();
+        List<Guest> guests = this.guestService.listAllGuests();// zaso ima gosti u ponudite?
         model.addAttribute("rooms", rooms);
         model.addAttribute("guests", guests);
         model.addAttribute("bodyContent", "add-offer");
-        return ""; //TODO
+        return "master-template";
     }
 
     @PostMapping("/add")
     public String saveOffer(
-            @RequestParam(required = false)Long id,
+            @RequestParam(required = false) Long id,
             @RequestParam String offerFor,
             @RequestParam String offerName,
-            @RequestParam OfferType type){
-        if (id!=null){
-            this.offerService.update(id, offerFor, offerName, type);
-        } else {
-            this.offerService.create(offerFor, offerName, type);
-        }
+            @RequestParam OfferType type) {
+        this.offerService.save(offerFor, offerName, type);
         return "redirect:/offers";
     }
 }

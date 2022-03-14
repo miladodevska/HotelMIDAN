@@ -1,6 +1,5 @@
 package com.example.midan.service.impl;
 
-import com.example.midan.model.Employee;
 import com.example.midan.model.Enumerations.OfferType;
 import com.example.midan.model.Exceptions.OfferNotFoundException;
 import com.example.midan.model.Offer;
@@ -9,6 +8,7 @@ import com.example.midan.service.OfferService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OfferServiceImpl implements OfferService {
@@ -17,7 +17,7 @@ public class OfferServiceImpl implements OfferService {
 
 
     @Override
-    public List<Offer> listallOffers() {
+    public List<Offer> listAllOffers() {
         return this.offerRepository.findAll();
     }
 
@@ -29,6 +29,12 @@ public class OfferServiceImpl implements OfferService {
     @Override
     public Offer findByName(String name) {
         return this.offerRepository.findByOfferName(name);
+    }
+
+    @Override
+    public Optional<Offer> save(String offerFor, String offerName, OfferType type) {
+        return Optional.of(this.offerRepository.save(new Offer(offerFor, offerName, type)));
+
     }
 
     @Override

@@ -7,6 +7,7 @@ import com.example.midan.service.BookingService;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 public class BookingServiceImpl implements BookingService {
 
@@ -24,6 +25,11 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public Booking findById(Long id) {
         return this.bookingRepository.findById(id).orElseThrow(InvalidBookingIdException::new);
+    }
+
+    @Override
+    public Optional<Booking> save(LocalDate checkIn, LocalDate checkOut, LocalDate bookingDate, boolean paymentStatus, boolean bookingStatus) {
+        return Optional.of(this.bookingRepository.save(new Booking(checkIn, checkOut, bookingDate, paymentStatus, bookingStatus)));
     }
 
     @Override

@@ -11,16 +11,14 @@ public class MidanController {
 
     @GetMapping
     public String getHomePage(Model model){
-        model.addAttribute("bodyContent", "home"); //ic ne mi teknuva ova zaso bese vaka ama neka go
-        return "";
-       //TODO
+        model.addAttribute("bodyContent", "home");
+        return "master-template";
     }
 
     @GetMapping("/access_denied")
     public String getAccessDeniedPage(Model model){
         model.addAttribute("bodyContent", "access_denied");
-        return "";
-        //TODO
+        return "master-template";
     }
 
 }

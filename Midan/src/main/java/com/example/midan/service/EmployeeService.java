@@ -4,6 +4,7 @@ import com.example.midan.model.Employee;
 import com.example.midan.model.Enumerations.DepartmentType;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface EmployeeService {
 
@@ -14,6 +15,8 @@ public interface EmployeeService {
     Employee findByNameAndSurname(String name, String surname);
 
     Employee findByEmbg(Long embg);
+
+    Optional<Employee> save(Long embg, String name, String surname, String email, String phoneNumber, Integer age, String address, Integer workExperience, DepartmentType department);
 
     Employee create(Long embg, String name, String surname, String email, String phoneNumber, Integer age, String address, Integer workExperience, DepartmentType department);
 

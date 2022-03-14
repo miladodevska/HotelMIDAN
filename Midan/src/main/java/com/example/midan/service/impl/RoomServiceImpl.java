@@ -8,6 +8,7 @@ import com.example.midan.service.RoomService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RoomServiceImpl implements RoomService {
@@ -25,8 +26,13 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
+    public Optional<Room> save(String name, Double price, RoomType type) {
+        return Optional.of(this.repository.save(new Room(name, price, type)));
+    }
+
+    @Override
     public Room create(String name, Double price, RoomType type) {
-        Room room = new Room(name,price,type);
+        Room room = new Room(name, price, type);
         return this.repository.save(room);
     }
 

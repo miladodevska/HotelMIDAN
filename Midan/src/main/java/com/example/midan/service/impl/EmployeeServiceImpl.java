@@ -1,4 +1,5 @@
 package com.example.midan.service.impl;
+
 import com.example.midan.model.Employee;
 import com.example.midan.model.Enumerations.DepartmentType;
 import com.example.midan.model.Exceptions.InvalidEmployeeIdException;
@@ -6,6 +7,7 @@ import com.example.midan.repository.EmployeeRepository;
 import com.example.midan.service.EmployeeService;
 
 import java.util.List;
+import java.util.Optional;
 
 public class EmployeeServiceImpl implements EmployeeService {
 
@@ -34,6 +36,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee findByEmbg(Long embg) {
         return this.employeeRepository.findByEmbg(embg);
+    }
+
+    @Override
+    public Optional<Employee> save(Long embg, String name, String surname, String email, String phoneNumber, Integer age, String address, Integer workExperience, DepartmentType department) {
+        return Optional.of(this.employeeRepository.save(new Employee(embg, name, surname, email, phoneNumber, age, address, workExperience, department)));
     }
 
     @Override

@@ -9,6 +9,7 @@ import com.example.midan.service.ReceiptService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ReceiptServiceImpl implements ReceiptService {
@@ -26,8 +27,13 @@ public class ReceiptServiceImpl implements ReceiptService {
     }
 
     @Override
+    public Optional<Receipt> save(Guest guest, List<Room> room, Double price) {
+        return Optional.of(this.repository.save(new Receipt(guest, room, price)));
+    }
+
+    @Override
     public Receipt create(Guest guest, List<Room> room, Double price) {
-        Receipt receipt = new Receipt(guest,room,price);
+        Receipt receipt = new Receipt(guest, room, price);
         return this.repository.save(receipt);
     }
 

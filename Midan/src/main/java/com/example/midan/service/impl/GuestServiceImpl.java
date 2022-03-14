@@ -7,6 +7,7 @@ import com.example.midan.service.GuestService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class GuestServiceImpl implements GuestService {
@@ -28,28 +29,34 @@ public class GuestServiceImpl implements GuestService {
     }
 
     @Override
+    public Optional<Guest> save(String name, String surname, String email, GuestType type) {
+        return Optional.of(this.guestRepository.save(new Guest(name, surname, email, type)));
+
+    }
+
+    @Override
     public Guest create(String name, String surname, String email, GuestType type) {
-        if(name==null || name.isEmpty()){
+        if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException();
         }
-        Guest g = new Guest(name,surname,email,type);
+        Guest g = new Guest(name, surname, email, type);
         guestRepository.save(g);
         return g;
     }
 
     @Override
     public Guest update(Long id, String name, String surname, String email, GuestType type) {
-        if(name==null || name.isEmpty()){
+        if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException();
         }
-        Guest g = new Guest(name,surname,email,type);
+        Guest g = new Guest(name, surname, email, type);
         guestRepository.save(g);
         return g;
     }
 
     @Override
     public void delete(Long id) {
-        if(id==null){
+        if (id == null) {
             throw new IllegalArgumentException();
         }
         this.guestRepository.deleteById(id);

@@ -4,14 +4,17 @@ import com.example.midan.model.Enumerations.OfferType;
 import com.example.midan.model.Offer;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface OfferService {
 
-    List<Offer> listallOffers();
+    List<Offer> listAllOffers();
 
     Offer findById(Long id);
 
     Offer findByName(String name);
+
+    Optional<Offer> save(String offerFor, String offerName, OfferType type);
 
     Offer create(String offerFor, String offerName, OfferType type);
 
