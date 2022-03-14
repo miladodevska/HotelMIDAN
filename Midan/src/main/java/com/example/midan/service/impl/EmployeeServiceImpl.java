@@ -5,10 +5,12 @@ import com.example.midan.model.Enumerations.DepartmentType;
 import com.example.midan.model.Exceptions.InvalidEmployeeIdException;
 import com.example.midan.repository.EmployeeRepository;
 import com.example.midan.service.EmployeeService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepository employeeRepository;
