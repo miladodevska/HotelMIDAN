@@ -27,6 +27,12 @@ public class Guest {
         this.gender = gender;
     }
 
+    public Guest(String name, String surname, String email) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

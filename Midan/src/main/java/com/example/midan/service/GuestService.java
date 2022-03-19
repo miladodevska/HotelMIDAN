@@ -19,4 +19,8 @@ public interface GuestService {
     Guest update(Long id, String name, String surname, String email, GuestType type);
 
     void delete(Long id);
+
+    Guest login(String username, String password);
+
+    Guest register(String email, String name, String surname, String password, String repeatPassword);
 }

@@ -1,6 +1,7 @@
 package com.example.midan.service.impl;
 
 import com.example.midan.model.Enumerations.GuestType;
+import com.example.midan.model.Exceptions.*;
 import com.example.midan.model.Guest;
 import com.example.midan.repository.GuestRepository;
 import com.example.midan.service.GuestService;
@@ -61,4 +62,30 @@ public class GuestServiceImpl implements GuestService {
         }
         this.guestRepository.deleteById(id);
     }
+
+    @Override
+    public Guest login(String username, String password) {
+        if(username==null || username.isEmpty() || password==null || password.isEmpty()){
+            throw new InvalidArgumentsException();
+        }
+        return (Guest) guestRepository.findByUsernameAndPassword(username,password).orElseThrow(InvalidGuestCredentialException::new);
+    }
+
+    @Override
+    public Guest register(String email, String name, String surname, String password, String repeatPassword) {
+        if(email==null || email.isEmpty() || password==null || password.isEmpty()) {
+            throw new InvalidUsernameOrPasswordException();
+        }
+        if(!password.equals(repeatPassword)){
+            throw new PasswordDoNotMatchException();
+        }
+
+        if(this.guestRepository.findByUsername(email).isPresent()){
+            throw new UsernameAlreadyExistException(email);
+        }
+        Guest guest = new Guest(name,surname,email);
+        return guestRepository.save(guest);
+    }
+
+
 }
