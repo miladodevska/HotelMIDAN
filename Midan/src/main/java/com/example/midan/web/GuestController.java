@@ -1,10 +1,7 @@
 package com.example.midan.web;
 
-
 import com.example.midan.model.Enumerations.GuestType;
-import com.example.midan.model.Enumerations.OfferType;
 import com.example.midan.model.Guest;
-import com.example.midan.model.Offer;
 import com.example.midan.model.Room;
 import com.example.midan.service.GuestService;
 import com.example.midan.service.OfferService;
