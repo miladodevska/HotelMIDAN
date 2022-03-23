@@ -22,8 +22,8 @@ public class Receipt {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    private Guest guest;
+    @ManyToOne
+    private Guest guest; //PROBLEM!!!
 
     @OneToMany
     private List<Room> room; //dali sigurno treba ova?

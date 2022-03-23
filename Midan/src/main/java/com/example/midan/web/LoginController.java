@@ -33,22 +33,5 @@ public class LoginController {
         return "login.html";
     }
 
-    @PostMapping
-    public String login(HttpServletRequest request, Model model)
-    {
-        Guest guest = null;
-
-        try{
-            guest = this.guestService.login(request.getParameter("username"),request.getParameter("password"));
-            request.getSession().setAttribute("guest",guest);
-            return "redirect:/home";
-        }
-        catch (InvalidGuestCredentialException exception)
-        {
-            model.addAttribute("hasError",true);
-            model.addAttribute("error",exception.getMessage());
-            return "login";
-        }
-    }
 
 }

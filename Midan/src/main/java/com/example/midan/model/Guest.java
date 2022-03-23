@@ -4,6 +4,7 @@ import com.example.midan.model.Enumerations.GuestType;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -56,8 +57,8 @@ public class Guest {
     @Enumerated(EnumType.STRING)
     private GuestType type; // Tip na gostin
 
-    @OneToOne //tuka mozda manytoone
-    private Receipt receipt;
+    @OneToMany//tuka mozda manytoone PROBLEM!!!!
+    private List<Receipt> receipt; //Eden recept/smetka so eden gostin
 
     private Integer numVisits = 0;
 

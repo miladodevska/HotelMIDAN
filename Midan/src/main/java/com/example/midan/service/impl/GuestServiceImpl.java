@@ -63,29 +63,32 @@ public class GuestServiceImpl implements GuestService {
         this.guestRepository.deleteById(id);
     }
 
-    @Override
-    public Guest login(String username, String password) {
-        if(username==null || username.isEmpty() || password==null || password.isEmpty()){
-            throw new InvalidArgumentsException();
-        }
-        return (Guest) guestRepository.findByUsernameAndPassword(username,password).orElseThrow(InvalidGuestCredentialException::new);
-    }
-
-    @Override
-    public Guest register(String email, String name, String surname, String password, String repeatPassword) {
-        if(email==null || email.isEmpty() || password==null || password.isEmpty()) {
-            throw new InvalidUsernameOrPasswordException();
-        }
-        if(!password.equals(repeatPassword)){
-            throw new PasswordDoNotMatchException();
-        }
-
-        if(this.guestRepository.findByUsername(email).isPresent()){
-            throw new UsernameAlreadyExistException(email);
-        }
-        Guest guest = new Guest(name,surname,email);
-        return guestRepository.save(guest);
-    }
+//    @Override
+//    public Guest login(String username, String password) {
+//        //Spring security
+//        if(username==null || username.isEmpty() || password==null || password.isEmpty()){
+//            throw new InvalidArgumentsException();
+//        }
+//        return (Guest) guestRepository.findByUsernameAndPassword(username,password)
+//                .orElseThrow(InvalidGuestCredentialException::new);
+//    }
+//
+//    @Override
+//    public Guest register(String email, String name, String surname, String password, String repeatPassword) {
+//        //Standardna forma so baza
+//        if(email==null || email.isEmpty() || password==null || password.isEmpty()) {
+//            throw new InvalidUsernameOrPasswordException();
+//        }
+//        if(!password.equals(repeatPassword)){
+//            throw new PasswordDoNotMatchException();
+//        }
+//
+//        if(this.guestRepository.findByUsername(email).isPresent()){
+//            throw new UsernameAlreadyExistException(email);
+//        }
+//        Guest guest = new Guest(name,surname,email);
+//        return guestRepository.save(guest);
+//    }
 
 
 }

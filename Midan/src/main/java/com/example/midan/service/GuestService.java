@@ -20,7 +20,7 @@ public interface GuestService {
 
     void delete(Long id);
 
-    Guest login(String username, String password);
-
-    Guest register(String email, String name, String surname, String password, String repeatPassword);
+//    Guest login(String username, String password);
+//
+//    Guest register(String email, String name, String surname, String password, String repeatPassword);
 }

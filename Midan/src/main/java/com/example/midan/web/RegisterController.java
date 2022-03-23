@@ -34,22 +34,7 @@ public class RegisterController {
         return "master-template"; // NEKOJ TEMPLEJT OD GOOGLE !!!!!!
     }
 
-    @PostMapping
-    public String register(@RequestParam String email,
-                           @RequestParam String name,
-                           @RequestParam String surname,
-                           @RequestParam String password,
-                           @RequestParam String repeatedPassword)
-    {
-        try{
-            this.guestService.register(email,name,surname,password,repeatedPassword);
-            return "redirect:/login";
-        }
-        catch (PasswordDoNotMatchException | InvalidArgumentsException exception)
-        {
-            return "redirect:/register?error="+exception.getMessage();
-        }
-    }
+
 
 
 
