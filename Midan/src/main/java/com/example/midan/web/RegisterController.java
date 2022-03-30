@@ -35,7 +35,25 @@ public class RegisterController {
     }
 
 
+//KE NI TREBA METODOV AMA PRVO SAKAV DA SE KONSULTIRAM SO VAS
 
-
+//
+//    @PostMapping
+//    public String register(@RequestParam String username,
+//                           @RequestParam String password,
+//                           @RequestParam String repeatedPassword,
+//                           @RequestParam String name,
+//                           @RequestParam String surname,
+//                           @RequestParam Role role )
+//    {
+//        try{
+//            this.userService.register(username,password,repeatedPassword,name,surname,role);
+//            return "redirect:/login";
+//        }
+//        catch (PasswordsDoNotMatchException | InvalidArgumentsException exception)
+//        {
+//            return "redirect:/register?error="+exception.getMessage();
+//        }
+//    }
 
 }
