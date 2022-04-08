@@ -12,11 +12,11 @@ public interface RoomService {
 
     Room findById(Long id);
 
-    Optional<Room> save(String name, Double price, RoomType type);
+    Optional<Room> save(String name, Double price, RoomType type, String imageUrl);
 
-    Room create(String name, Double price, RoomType type);
+    Room create(String name, Double price, RoomType type, String imageUrl);
 
-    Room update(Long id, String name, Double price, RoomType type);
+    Room update(Long id, String name, Double price, RoomType type, String imageUrl);
 
     Room delete(Long id);
 }

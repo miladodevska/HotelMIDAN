@@ -17,11 +17,7 @@ public class Room {
         this.type = type;
         this.imageUrl = imageUrl;
     }
-    public Room(String name, Double price, RoomType type) {
-        this.name = name;
-        this.price = price;
-        this.type = type;
-    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

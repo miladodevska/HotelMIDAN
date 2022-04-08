@@ -27,22 +27,23 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public Optional<Room> save(String name, Double price, RoomType type) {
-        return Optional.of(this.repository.save(new Room(name, price, type)));
+    public Optional<Room> save(String name, Double price, RoomType type, String imageUrl) {
+        return Optional.of(this.repository.save(new Room(name, price, type, imageUrl)));
     }
 
     @Override
-    public Room create(String name, Double price, RoomType type) {
-        Room room = new Room(name, price, type);
+    public Room create(String name, Double price, RoomType type, String imageUrl) {
+        Room room = new Room(name, price, type, imageUrl);
         return this.repository.save(room);
     }
 
     @Override
-    public Room update(Long id, String name, Double price, RoomType type) {
+    public Room update(Long id, String name, Double price, RoomType type, String imageUrl) {
         Room room = this.findById(id);
         room.setName(name);
         room.setPrice(price);
         room.setType(type);
+        room.setImageUrl(imageUrl);
         this.repository.save(room);
         return room;
     }

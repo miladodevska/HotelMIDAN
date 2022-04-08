@@ -78,8 +78,9 @@ public class RoomController {
             @RequestParam(required = false) Long id,
             @RequestParam String name,
             @RequestParam Double price,
-            @RequestParam RoomType type) {
-        this.roomService.save(name, price, type);
+            @RequestParam RoomType type,
+            @RequestParam String imageUrl) {
+        this.roomService.save(name, price, type, imageUrl);
         return "redirect:/rooms";
     }
 }
