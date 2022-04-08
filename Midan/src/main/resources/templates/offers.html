@@ -1,10 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<th:block xmlns:th="http://www.thymeleaf.org">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">HOTEL MIDAN</h1>
+            <h3>All offers</h3>
+        </div>
+    </section>
 
-</body>
-</html>
+    <div class="col-12" th:if="${offers.size() > 0}">
+        <div class="container offer" th:each="offer : ${offers}">
+            <div class="col-md-3">
+                <div class="card" style="width: 20rem; margin:10px;">
+                    <div class="card-body">
+                        <p class="card-title" th:text="${offer.getOfferName()}"></p><hr>
+                        <p class="card-text" th:text="${offer.getOfferFor()}"></p>
+                        <small><p class="card-text" th:text="${offer.getType()}"></small></p>
+                        <a href="#" class="btn btn-primary">Add to card</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--    <th:block sec:authorize="hasRole('ROLE_ADMIN')">-->
+    <!--        <form th:action="@{'/rooms/delete/{id}' (id=${room.getId()})}"-->
+    <!--              th:method="DELETE">-->
+    <!--            <button type="submit"-->
+    <!--                    class="btn btn-sm btn-danger delete-room">-->
+    <!--                <i class="fa fa-trash">Delete</i>-->
+    <!--            </button>-->
+    <!--        </form>-->
+    <!--    </th:block>-->
+    <!--    <th:block sec:authorize="hasRole('ROLE_ADMIN')">-->
+    <!--        <a th:href="@{'/rooms/edit-form/{id}' (id=${room.getId()})}"-->
+    <!--           class="btn btn-sm btn-info edit-room">-->
+    <!--            <i class="fa fa-trash">Edit</i>-->
+    <!--        </a>-->
+    <!--    </th:block>-->
+
+    <div class="col mb-3">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <a href="/offers/add-form" class="btn btn-block btn-dark add-offer-btn">Add new offer</a>
+            </div>
+        </div>
+    </div>
+    <br>
+</th:block>

@@ -5,6 +5,7 @@ import com.example.midan.model.Exceptions.InvalidRoomIdException;
 import com.example.midan.model.Room;
 import com.example.midan.repository.RoomRepository;
 import com.example.midan.service.RoomService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.Optional;
 @Service
 public class RoomServiceImpl implements RoomService {
 
-    private RoomRepository repository;
+    @Autowired private RoomRepository repository;
 
     @Override
     public List<Room> listAllRooms() {

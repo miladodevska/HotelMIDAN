@@ -5,6 +5,7 @@ import com.example.midan.model.Exceptions.OfferNotFoundException;
 import com.example.midan.model.Offer;
 import com.example.midan.repository.OfferRepository;
 import com.example.midan.service.OfferService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.Optional;
 @Service
 public class OfferServiceImpl implements OfferService {
 
-    private OfferRepository offerRepository;
+    @Autowired private OfferRepository offerRepository;
 
 
     @Override

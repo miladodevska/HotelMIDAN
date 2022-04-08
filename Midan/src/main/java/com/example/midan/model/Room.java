@@ -11,6 +11,12 @@ public class Room {
 
     public Room() {
     }
+    public Room(String name, Double price, RoomType type, String imageUrl) {
+        this.name = name;
+        this.price = price;
+        this.type = type;
+        this.imageUrl = imageUrl;
+    }
     public Room(String name, Double price, RoomType type) {
         this.name = name;
         this.price = price;
@@ -23,6 +29,8 @@ public class Room {
     private String name;
 
     private Double price;
+
+    private String imageUrl;
 
     @Enumerated(EnumType.STRING)
     private RoomType type;
