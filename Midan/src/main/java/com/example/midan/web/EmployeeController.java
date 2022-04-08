@@ -30,6 +30,8 @@ public class EmployeeController {
             model.addAttribute("hasError", true);
             model.addAttribute("error", error);
         }
+        List<Employee> employees = this.employeeService.listAllEmployees();
+        model.addAttribute("employees", employees);
         model.addAttribute("bodyContent", "employees");
         return "master-template";
     }

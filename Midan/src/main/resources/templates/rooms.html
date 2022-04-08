@@ -1,10 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<th:block xmlns:th="http://www.thymeleaf.org">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">HOTEL MIDAN</h1>
+            <h3>All rooms</h3>
+        </div>
+    </section>
 
-</body>
-</html>
+    <div class="col-12" th:if="${rooms.size() > 0}">
+         <span class="border border-dark">
+              <div class="container room" th:each="room : ${rooms}">
+                  <div class="row">
+                      <div class="col-xl-3">
+                          <div class="card" style="width: 15rem;">
+                              <img class="card-img-top" src="" alt="Card image cap">
+                              <div class="card-body">
+                                  <p class="card-title" th:text="${room.getName()}"></p><hr>
+                                  <p class="card-text" th:text="${room.getPrice()}"></p>
+                                  <p class="card-text" th:text="${room.getType()}"></p>
+                                  <a href="#" class="btn btn-primary">Add to card</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+         </span>
+    </div>
+
+
+<!--    <th:block sec:authorize="hasRole('ROLE_ADMIN')">-->
+<!--        <form th:action="@{'/rooms/delete/{id}' (id=${room.getId()})}"-->
+<!--              th:method="DELETE">-->
+<!--            <button type="submit"-->
+<!--                    class="btn btn-sm btn-danger delete-room">-->
+<!--                <i class="fa fa-trash">Delete</i>-->
+<!--            </button>-->
+<!--        </form>-->
+<!--    </th:block>-->
+<!--    <th:block sec:authorize="hasRole('ROLE_ADMIN')">-->
+<!--        <a th:href="@{'/rooms/edit-form/{id}' (id=${room.getId()})}"-->
+<!--           class="btn btn-sm btn-info edit-room">-->
+<!--            <i class="fa fa-trash">Edit</i>-->
+<!--        </a>-->
+<!--    </th:block>-->
+
+
+
+
+    <div class="col mb-3">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <a href="/rooms/add-form" class="btn btn-block btn-dark add-room-btn">
+                    Add new room
+                </a>
+            </div>
+        </div>
+    </div>
+    <br>
+
+
+
+
+
+</th:block>

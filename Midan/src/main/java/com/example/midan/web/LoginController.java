@@ -30,7 +30,7 @@ public class LoginController {
     public String getLoginPage(Model model)
     {
         model.addAttribute("bodyContent","login");
-        return "login.html";
+        return "master-template";
     }
 
 
