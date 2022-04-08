@@ -6,15 +6,17 @@
         </div>
     </section>
 
-    <div th:if="${rooms.size() > 0}">
-        <div class="container room" th:each="room : ${rooms}">
-            <div class="card" style="width: 18rem; margin:10px;">
-                <img class="card-img-top" src="${room.getImageUrl()}" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title" th:text="${room.getName()}"></h5><hr>
-                    <p class="card-text" th:text="${room.getPrice()}"></p>
-                    <p class="card-text" th:text="${room.getType()}"></p>
-                    <a href="#" class="btn btn-primary">Add to card</a>
+    <div class="container mb-4">
+        <div th:if="${rooms.size() > 0}">
+            <div th:each="room : ${rooms}">
+                <div class="card" style="width: 20rem; margin:10px;">
+                    <img class="card-img-top" th:src="${room.getImageUrl()}" alt="Card image cap">
+                    <div class="card-body">
+                        <h3 class="card-title" th:text="${room.getName()}"></h3><hr>
+                        <p class="card-text" th:text="${room.getPrice()}"></p>
+                        <small><p class="card-text" th:text="${room.getType()}"></small></p>
+                        <a href="#" class="btn btn-dark">Add to card</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -36,10 +38,12 @@
 <!--        </a>-->
 <!--    </th:block>-->
 
-    <div class="col mb-3">
-        <div class="row">
-            <div class="col-sm-12 col-md-12">
-                <a href="/rooms/add-form" class="btn btn-block btn-dark add-room-btn">Add new room</a>
+    <div class="container">
+        <div class="col mb-3">
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <a href="/rooms/add-form" class="btn btn-block btn-dark add-room-btn">Add new room</a>
+                </div>
             </div>
         </div>
     </div>

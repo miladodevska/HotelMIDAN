@@ -6,15 +6,15 @@
         </div>
     </section>
 
-    <div class="col-12" th:if="${offers.size() > 0}">
-        <div class="container offer" th:each="offer : ${offers}">
-            <div class="col-md-3">
+    <div class="container mb-4">
+        <div th:if="${offers.size() > 0}">
+            <div th:each="offer : ${offers}">
                 <div class="card" style="width: 20rem; margin:10px;">
                     <div class="card-body">
-                        <p class="card-title" th:text="${offer.getOfferName()}"></p><hr>
+                        <h3 class="card-title" th:text="${offer.getOfferName()}"></h3><hr>
                         <p class="card-text" th:text="${offer.getOfferFor()}"></p>
                         <small><p class="card-text" th:text="${offer.getType()}"></small></p>
-                        <a href="#" class="btn btn-primary">Add to card</a>
+                        <a href="#" class="btn btn-dark">Add to card</a>
                     </div>
                 </div>
             </div>
@@ -37,10 +37,12 @@
     <!--        </a>-->
     <!--    </th:block>-->
 
-    <div class="col mb-3">
-        <div class="row">
-            <div class="col-sm-12 col-md-12">
-                <a href="/offers/add-form" class="btn btn-block btn-dark add-offer-btn">Add new offer</a>
+    <div class="container">
+        <div class="col mb-3">
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <a href="/offers/add-form" class="btn btn-block btn-dark add-offer-btn">Add new offer</a>
+                </div>
             </div>
         </div>
     </div>
