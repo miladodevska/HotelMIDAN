@@ -1,14 +1,10 @@
 package com.example.midan.web;
 
-
-import com.example.midan.model.Enumerations.OfferType;
 import com.example.midan.model.Enumerations.RoomType;
 import com.example.midan.model.Guest;
-import com.example.midan.model.Receipt;
 import com.example.midan.model.Room;
 import com.example.midan.service.GuestService;
 import com.example.midan.service.OfferService;
-import com.example.midan.service.ReceiptService;
 import com.example.midan.service.RoomService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
