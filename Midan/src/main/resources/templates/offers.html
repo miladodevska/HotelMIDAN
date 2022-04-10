@@ -8,13 +8,15 @@
 
     <div class="container mb-4">
         <div th:if="${offers.size() > 0}">
-            <div th:each="offer : ${offers}">
-                <div class="card" style="width: 20rem; margin:10px;">
-                    <div class="card-body">
-                        <h3 class="card-title" th:text="${offer.getOfferName()}"></h3><hr>
-                        <p class="card-text" th:text="${offer.getOfferFor()}"></p>
-                        <small><p class="card-text" th:text="${offer.getType()}"></small></p>
-                        <a href="#" class="btn btn-dark">Add to card</a>
+            <div class="card-deck">
+                <div th:each="offer : ${offers}">
+                    <div class="card" style="width: 20rem; margin:10px;">
+                        <div class="card-body">
+                            <h3 class="card-title" th:text="${offer.getOfferName()}"></h3><hr>
+                            <p class="card-text" th:text="${offer.getOfferFor()}"></p>
+                            <small><p class="card-text" th:text="${offer.getType()}"></small></p>
+                            <a href="#" class="btn btn-dark">Add to card</a>
+                        </div>
                     </div>
                 </div>
             </div>
