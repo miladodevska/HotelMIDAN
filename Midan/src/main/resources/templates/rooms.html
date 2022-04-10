@@ -10,7 +10,7 @@
         <div th:if="${rooms.size() > 0}">
             <div class="card-deck">
                 <div th:each="room : ${rooms}">
-                    <div class="card" style="width: 20rem; margin:10px;">
+                    <div class="card" style="width: 21rem; margin:15px;">
                         <img class="card-img-top" th:src="${room.getImageUrl()}" alt="Card image cap" style="height: 159px;">
                         <div class="card-body">
                             <h3 class="card-title" th:text="${room.getName()}"></h3><hr>
