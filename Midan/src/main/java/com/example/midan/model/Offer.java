@@ -22,9 +22,11 @@ public class Offer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     private String offerFor; // za kogo ponuda
 
     private String offerName;
+    private Float offerPrice;
 
     @Enumerated(EnumType.STRING)
     private OfferType type;
