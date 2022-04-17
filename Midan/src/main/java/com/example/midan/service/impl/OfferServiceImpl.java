@@ -24,7 +24,7 @@ public class OfferServiceImpl implements OfferService {
 
     @Override
     public Offer findById(Long id) {
-        return this.offerRepository.findById(id).orElseThrow(OfferNotFoundException::new);
+        return this.offerRepository.findById(id).orElseThrow(() -> new OfferNotFoundException(id));
     }
 
     @Override
@@ -46,7 +46,7 @@ public class OfferServiceImpl implements OfferService {
 
     @Override
     public Offer update(Long id, String offerFor, String offerName, OfferType type) {
-        Offer offer = this.offerRepository.findById(id).orElseThrow(OfferNotFoundException::new);
+        Offer offer = this.offerRepository.findById(id).orElseThrow(() -> new OfferNotFoundException(id));
         offer.setOfferFor(offerFor);
         offer.setOfferName(offerName);
         offer.setType(type);

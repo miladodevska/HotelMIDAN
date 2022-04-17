@@ -1,9 +1,9 @@
 package com.example.midan.service.impl;
 
 import com.example.midan.model.Enumerations.ShoppingCartStatus;
-import com.example.midan.model.Exceptions.OfferNotFoundException;
 import com.example.midan.model.Exceptions.ProductAlreadyInShoppingCartException;
 import com.example.midan.model.Exceptions.ShoppingCartNotFound;
+import com.example.midan.model.Exceptions.UserNotFoundException;
 import com.example.midan.model.Guest;
 import com.example.midan.model.Offer;
 import com.example.midan.model.ShoppingCart;
@@ -40,8 +40,8 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Override
     public ShoppingCart getActiveShoppingCart(String username) {
-        Guest user = this.guestRepository.findByUsername(username)
-                .orElseThrow(() -> new OfferNotFoundException());
+        Guest user = this.guestRepository.findByName(username)
+                .orElseThrow(UserNotFoundException::new);
 
         return this.shoppingCartRepository.findByGuestAndStatus(user, ShoppingCartStatus.CREATED)
                 .orElseGet(() -> {
