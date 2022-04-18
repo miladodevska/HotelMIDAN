@@ -6,12 +6,12 @@
         </div>
     </section>
 
-    <div class="container mb-2">
+    <div class="container mb-4">
         <div th:if="${rooms.size() > 0}">
-            <div class="card-deck px-4 px-lg-5 my-2">
+            <div class="card-deck">
                 <div th:each="room : ${rooms}">
-                    <div class="card h-100 text-success" style="width: 20rem; margin:10px;">
-                        <img class="card-img-top" th:src="${room.getImageUrl()}" alt="Card image cap">
+                    <div class="card text-success" style="width: 20rem; margin:10px;">
+                        <img class="card-img-top" style="height: 139px;" th:src="${room.getImageUrl()}" alt="Card image cap">
                         <div class="card-body">
                             <h3 class="card-title text-uppercase" th:text="${room.getName()}"></h3><hr>
                             <p class="card-text" th:text="${room.getPrice()}"></p>
@@ -20,7 +20,7 @@
                         </div>
                     </div>
                 </div>
-                </div>
+            </div>
         </div>
     </div>
 
