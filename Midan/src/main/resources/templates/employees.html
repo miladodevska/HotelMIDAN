@@ -32,6 +32,7 @@
                             <td th:text="${employee.getEmail()}"></td>
                             <td th:text="${employee.getPhoneNumber()}"></td>
                             <td th:text="${employee.getAge()}"></td>
+                            <td th:text="${employee.getAddress()}"></td>
                             <td th:text="${employee.getDepartment()}"></td>
                             <td class="text-right">
                                 <th:block sec:authorize="hasRole('ROLE_ADMIN')">
@@ -44,7 +45,7 @@
                                     </form>
                                 </th:block>
                                 <th:block sec:authorize="hasRole('ROLE_ADMIN')">
-                                    <a th:href="@{'/employees/edit-form/{id}' (id=${employee.getId()})}"
+                                    <a th:href="@{'/employees/edit/{id}' (id=${employee.getId()})}"
                                        class="btn btn-sm btn-info edit-employee">
                                         <i class="fa fa-trash">Edit</i>
                                     </a>

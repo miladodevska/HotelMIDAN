@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface OfferRepository extends JpaRepository<Offer, Long> {
     Offer findByOfferName(String name);
+    void deleteByOfferName(String name);
 }

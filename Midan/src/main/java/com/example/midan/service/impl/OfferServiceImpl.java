@@ -34,6 +34,7 @@ public class OfferServiceImpl implements OfferService {
 
     @Override
     public Optional<Offer> save(String offerFor, String offerName, OfferType type) {
+        this.offerRepository.deleteByOfferName(offerName);
         return Optional.of(this.offerRepository.save(new Offer(offerFor, offerName, type)));
 
     }

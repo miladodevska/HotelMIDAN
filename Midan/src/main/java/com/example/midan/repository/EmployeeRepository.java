@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     Employee findByEmbg(Long embg);
     Employee findByNameAndSurname(String name, String surname);
+    void deleteByEmbg(Long embg);
 }

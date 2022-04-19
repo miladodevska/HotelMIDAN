@@ -42,6 +42,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Optional<Employee> save(Long embg, String name, String surname, String email, String phoneNumber, Integer age, String address, Integer workExperience, DepartmentType department) {
+        this.employeeRepository.deleteByEmbg(embg);
         return Optional.of(this.employeeRepository.save(new Employee(embg, name, surname, email, phoneNumber, age, address, workExperience, department)));
     }
 

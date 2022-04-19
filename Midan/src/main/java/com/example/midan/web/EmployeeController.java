@@ -46,10 +46,11 @@ public class EmployeeController {
     public String editEmployeePage(@PathVariable Long id, Model model) {
         if (this.employeeService.findById(id) != null) { //? nemase isPresent() -- ne go dava u auto complete, znaci ne mozeme da stavime kje javuva greska
             Employee employee = this.employeeService.findById(id);
+            model.addAttribute("employee",employee);
             model.addAttribute("bodyContent", "add-employee");
             return "master-template";
         }
-        return "redirect:/offers?error=OfferNotFound";
+        return "redirect:/employees?error=InvalidEmployeeIdException";
     }
 
     @GetMapping("/add-form")
@@ -73,6 +74,6 @@ public class EmployeeController {
             @RequestParam Integer workExperience,
             @RequestParam DepartmentType department) {
         this.employeeService.save(embg, name, surname, email, phoneNumber, age, address, workExperience, department);
-        return "redirect:/employee";
+        return "redirect:/employees";
     }
 }

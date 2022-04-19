@@ -28,6 +28,7 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public Optional<Room> save(String name, Double price, RoomType type, String imageUrl) {
+        this.repository.deleteByName(name);
         return Optional.of(this.repository.save(new Room(name, price, type, imageUrl)));
     }
 
