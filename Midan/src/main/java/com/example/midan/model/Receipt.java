@@ -23,10 +23,10 @@ public class Receipt {
     private Long id;
 
     @ManyToOne
-    private Guest guest; //PROBLEM!!!
+    private Guest guest;
 
-    @OneToMany
-    private List<Room> room; //dali sigurno treba ova?
+    @OneToMany(mappedBy = "receipt", fetch = FetchType.EAGER)
+    private List<Room> room;
 
     private Double price;
 

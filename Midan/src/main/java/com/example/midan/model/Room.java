@@ -4,6 +4,7 @@ import com.example.midan.model.Enumerations.RoomType;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -28,6 +29,17 @@ public class Room {
 
     private String imageUrl;
 
+    @OneToMany(mappedBy = "room")
+    private List<Guest> guestList;
+
+    @ManyToOne
+    private Receipt receipt;
+
     @Enumerated(EnumType.STRING)
     private RoomType type;
+
+    @OneToMany(mappedBy = "room")
+    private List<Booking> bookings;
+
+
 }

@@ -5,6 +5,9 @@ import com.example.midan.model.Exceptions.*;
 import com.example.midan.model.Guest;
 import com.example.midan.repository.GuestRepository;
 import com.example.midan.service.GuestService;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,9 +17,11 @@ import java.util.Optional;
 public class GuestServiceImpl implements GuestService {
 
     private final GuestRepository guestRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public GuestServiceImpl(GuestRepository guestRepository) {
+    public GuestServiceImpl(GuestRepository guestRepository, PasswordEncoder passwordEncoder) {
         this.guestRepository = guestRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -63,6 +68,11 @@ public class GuestServiceImpl implements GuestService {
         this.guestRepository.deleteById(id);
     }
 
+    @Override
+    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+        return guestRepository.findByUsername(s).orElseThrow(() -> new UsernameNotFoundException(s));
+    }
+
 //    @Override
 //    public Guest login(String username, String password) {
 //        //Spring security
@@ -73,22 +83,22 @@ public class GuestServiceImpl implements GuestService {
 //                .orElseThrow(InvalidGuestCredentialException::new);
 //    }
 //
-//    @Override
-//    public Guest register(String email, String name, String surname, String password, String repeatPassword) {
-//        //Standardna forma so baza
-//        if(email==null || email.isEmpty() || password==null || password.isEmpty()) {
-//            throw new InvalidUsernameOrPasswordException();
-//        }
-//        if(!password.equals(repeatPassword)){
-//            throw new PasswordDoNotMatchException();
-//        }
-//
-//        if(this.guestRepository.findByUsername(email).isPresent()){
-//            throw new UsernameAlreadyExistException(email);
-//        }
-//        Guest guest = new Guest(name,surname,email);
-//        return guestRepository.save(guest);
-//    }
+    @Override
+    public Guest register(String username, String email, String name, String surname, String password, String repeatPassword) {
+        //Standardna forma so baza
+        if(username==null || username.isEmpty() || password==null || password.isEmpty()) {
+            throw new InvalidUsernameOrPasswordException();
+        }
+        if(!password.equals(repeatPassword)){
+            throw new PasswordDoNotMatchException();
+        }
+
+        if(this.guestRepository.findByUsername(username).isPresent()){
+            throw new UsernameAlreadyExistException(username);
+        }
+        Guest guest = new Guest(username,passwordEncoder.encode(password),name,surname);
+        return guestRepository.save(guest);
+    }
 
 
 }

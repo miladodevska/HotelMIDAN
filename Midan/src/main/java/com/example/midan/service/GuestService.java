@@ -2,11 +2,12 @@ package com.example.midan.service;
 
 import com.example.midan.model.Enumerations.GuestType;
 import com.example.midan.model.Guest;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface GuestService {
+public interface GuestService extends UserDetailsService {
 
     List<Guest> listAllGuests();
 
@@ -20,7 +21,5 @@ public interface GuestService {
 
     void delete(Long id);
 
-//    Guest login(String username, String password);
-//
-//    Guest register(String email, String name, String surname, String password, String repeatPassword);
+    Guest register(String username, String email, String name, String surname, String password, String repeatPassword);
 }

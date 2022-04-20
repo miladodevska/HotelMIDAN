@@ -3,6 +3,7 @@ package com.example.midan.web;
 
 import com.example.midan.model.Exceptions.InvalidArgumentsException;
 import com.example.midan.model.Exceptions.PasswordDoNotMatchException;
+import com.example.midan.model.Guest;
 import com.example.midan.service.GuestService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,25 +36,24 @@ public class RegisterController {
     }
 
 
-//KE NI TREBA METODOV AMA PRVO SAKAV DA SE KONSULTIRAM SO VAS
 
-//
-//    @PostMapping
-//    public String register(@RequestParam String username,
-//                           @RequestParam String password,
-//                           @RequestParam String repeatedPassword,
-//                           @RequestParam String name,
-//                           @RequestParam String surname,
-//                           @RequestParam Role role )
-//    {
-//        try{
-//            this.userService.register(username,password,repeatedPassword,name,surname,role);
-//            return "redirect:/login";
-//        }
-//        catch (PasswordsDoNotMatchException | InvalidArgumentsException exception)
-//        {
-//            return "redirect:/register?error="+exception.getMessage();
-//        }
-//    }
+    @PostMapping
+    public String register(
+            @RequestParam String username,
+            @RequestParam String email,
+            @RequestParam String name,
+            @RequestParam String surname,
+            @RequestParam String password,
+            @RequestParam String repeatPassword)
+    {
+        try{
+            this.guestService.register(username, email, name, surname, password, repeatPassword);
+            return "redirect:/login";
+        }
+        catch (PasswordDoNotMatchException | InvalidArgumentsException exception)
+        {
+            return "redirect:/register?error="+exception.getMessage();
+        }
+    }
 
 }

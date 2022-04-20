@@ -40,7 +40,7 @@
                     </div>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <li class="nav-item" sec:authorize="hasRole('ROLE_USER')">
                         <a class="btn btn-success btn-sm ml-3" href="/shopping-cart">
                             <i class="fa fa-shopping-cart"></i> Cart
                         </a>

@@ -2,10 +2,7 @@ package com.example.midan.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Data
@@ -37,5 +34,10 @@ public class Booking {
 
     private boolean bookingStatus;
 
+    @ManyToOne()
+    private Room room;
+
+    @ManyToOne()
+    private Guest guest;
 
 }

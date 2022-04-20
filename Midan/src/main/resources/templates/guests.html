@@ -18,7 +18,7 @@
                             <th scope="col">Email</th>
                             <th scope="col">Phone Number</th>
                             <th scope="col">Gender</th>
-                            <th scope="col">Room Number</th>
+                            <th scope="col">Room</th>
                             <th scope="col">Type</th>
                             <th scope="col"></th>
                         </tr>
@@ -30,7 +30,7 @@
                             <td th:text="${guest.getEmail()}"></td>
                             <td th:text="${guest.getPhoneNumber()}"></td>
                             <td th:text="${guest.getGender()}"></td>
-                            <td th:text="${guest.getRoomNumber()}"></td>
+                            <td th:text="${guest.getRoom() != null} ? ${guest.getRoom().getName()} : 'No room' "></td>
                             <td th:text="${guest.getType()}"></td>
                             <td class="text-right">
                                 <th:block sec:authorize="hasRole('ROLE_ADMIN')">
@@ -43,7 +43,7 @@
                                     </form>
                                 </th:block>
                                 <th:block sec:authorize="hasRole('ROLE_ADMIN')">
-                                    <a th:href="@{'/guests/edit-form/{id}' (id=${guest.getId()})}"
+                                    <a th:href="@{'/guests/edit/{id}' (id=${guest.getId()})}"
                                        class="btn btn-sm btn-info edit-guest">
                                         <i class="fa fa-trash">Edit</i>
                                     </a>
