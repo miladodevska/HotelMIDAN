@@ -7,6 +7,7 @@ import com.example.midan.repository.EmployeeRepository;
 import com.example.midan.service.EmployeeService;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,6 +42,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    @Transactional
     public Optional<Employee> save(Long embg, String name, String surname, String email, String phoneNumber, Integer age, String address, Integer workExperience, DepartmentType department) {
         this.employeeRepository.deleteByEmbg(embg);
         return Optional.of(this.employeeRepository.save(new Employee(embg, name, surname, email, phoneNumber, age, address, workExperience, department)));
@@ -53,6 +55,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    @Transactional
     public Employee update(Long id, Long embg, String name, String surname, String email, String phoneNumber, Integer age, String address, Integer workExperience, DepartmentType department) {
         Employee employee = this.findById(id);
         employee.setEmbg(embg);
