@@ -43,4 +43,15 @@ public class ShoppingCartController {
             return "redirect:/shopping-cart?error=" + exception.getMessage();
         }
     }
+
+    @PostMapping("/bookOffer/{id}")
+    public String bookOffer(@PathVariable Long id, HttpServletRequest req, Authentication authentication) {
+        try{
+            Guest guest = (Guest) authentication.getPrincipal();
+            this.shoppingCartService.addOfferToShoppingCart(guest.getUsername(), id); //DA NE TREBA REQ.GETUSER()?
+            return "redirect:/shopping-cart";
+        }catch (RuntimeException exception) {
+            return "redirect:/shopping-cart?error=" + exception.getMessage();
+        }
+    }
 }

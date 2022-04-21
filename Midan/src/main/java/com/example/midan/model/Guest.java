@@ -75,6 +75,9 @@ public class Guest implements UserDetails {
     @OneToMany(mappedBy = "guest")
     private List<Booking> bookings;
 
+    @OneToMany(mappedBy = "guest")
+    private List<ShoppingCart> carts;
+
     private Integer numVisits = 0;
 
 

@@ -15,13 +15,18 @@ public class ShoppingCart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private LocalDateTime dataCreated;
+
     @ManyToOne
     private Guest guest;
+
     @ManyToMany
     private List<Room> rooms;
+
     @ManyToMany
     private List<Offer> offers;
+
     @Enumerated(EnumType.STRING)
     private ShoppingCartStatus status;
 
