@@ -1,0 +1,55 @@
+<th:block xmlns:th="http://www.thymeleaf.org">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">HOTEL MIDAN</h1>
+            <h3>Add new room</h3>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <form action="/rooms/add" method="POST">
+                    <input id="id" type="hidden" name="id" th:value="(${room} != null ? ${room.getId()} : '')">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text"
+                               class="form-control"
+                               id="name"
+                               name="name"
+                               th:value="(${room} != null ? ${room.getName()} : '')"
+                               required
+                               placeholder="Enter room name">
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price</label>
+                        <input type="text"
+                               class="form-control"
+                               id="price"
+                               name="price"
+                               th:value="(${room} != null ? ${room.getPrice()} : '')"
+                               placeholder="Room price">
+                    </div>
+                    <div class="form-group dropdown">
+                        <label for="type">Type</label>
+                        <select id="type" name="type" class="form-control">
+                            <option value="">Choose a room type</option>
+                            <option th:each="room : ${T(com.example.midan.model.Enumerations.RoomType).values()}" th:value="${room}" th:text="${room}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="imageUrl">Image URL</label>
+                        <input type="text"
+                               class="form-control"
+                               id="imageUrl"
+                               name="imageUrl"
+                               th:value="(${room} != null ? ${room.getImageUrl()} : '')"
+                               placeholder="Picture">
+                    </div>
+                    <button id="submit" type="submit" class="btn btn-dark">Submit</button>
+                    <a type="button" class="btn btn-dark" href="/rooms">Back</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</th:block>

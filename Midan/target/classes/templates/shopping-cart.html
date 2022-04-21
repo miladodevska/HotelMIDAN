@@ -1,0 +1,51 @@
+<th:block xmlns:th="http://www.thymeleaf.org">
+
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h3 class="jumbotron-heading">Shopping cart for
+                <th:block th:if="${request.getRemoteUser() != null}" th:text="${request.getRemoteUser()}"></th:block>
+            </h3>
+        </div>
+    </section>
+
+    <div th:if="${hasError}">
+        <h5 class="text-center text-danger" th:text="${error}"></h5>
+    </div>
+
+    <div class="container mb-4">
+        <div class="row">
+            <div class="col-12" th:if="${offers.size() > 0}">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">Offer</th>
+                            <th scope="col">offerFor</th>
+                            <th scope="col">offerPrice</th>
+                            <th scope="col">type</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="offer : ${offers}" class="cart-item">
+                            <td th:text="${offer.getOfferName()}"></td>
+                            <td th:text="${offer.getOfferPrice()}"></td>
+                            <td th:text="${offer.getOfferFor()}"></td>
+                            <td th:text="${offer.getType()}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="col mb-3">
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <a href="/shopping-cart/booking" class="btn btn-block btn-dark add-offer-btn">Proceed to booking</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
