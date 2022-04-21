@@ -33,11 +33,11 @@ public class ShoppingCartController {
         return "master-template";
     }
 
-    @PostMapping("/add-product/{id}")
-    public String addProductToShoppingCart(@PathVariable Long id, HttpServletRequest req, Authentication authentication) {
+    @PostMapping("/add-offer/{id}")
+    public String addOfferToShoppingCart(@PathVariable Long id, HttpServletRequest req, Authentication authentication) {
         try{
             Guest guest = (Guest) authentication.getPrincipal();
-            this.shoppingCartService.addOfferToShoppingCart(guest.getName(), id);
+            this.shoppingCartService.addOfferToShoppingCart(guest.getUsername(), id); //DA NE TREBA REQ.GETUSER()?
             return "redirect:/shopping-cart";
         }catch (RuntimeException exception) {
             return "redirect:/shopping-cart?error=" + exception.getMessage();
