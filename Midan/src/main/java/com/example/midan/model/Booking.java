@@ -12,12 +12,18 @@ public class Booking {
     public Booking() {
     }
 
-    public Booking(LocalDate checkIn, LocalDate checkOut, LocalDate bookingDate, boolean paymentStatus, boolean bookingStatus) {
+    public Booking(LocalDate checkIn, LocalDate checkOut) {
         this.checkIn = checkIn;
         this.checkOut = checkOut;
-        this.bookingDate = bookingDate;
-        this.paymentStatus = paymentStatus;
-        this.bookingStatus = bookingStatus;
+        this.bookingDate = LocalDate.now();
+    }
+
+    public Booking(LocalDate checkIn, LocalDate checkOut, Room room, Guest guest) {
+        this.checkIn = checkIn;
+        this.checkOut = checkOut;
+        this.bookingDate = LocalDate.now();
+        this.room = room;
+        this.guest = guest;
     }
 
     @Id
@@ -28,11 +34,7 @@ public class Booking {
 
     private LocalDate checkOut;
 
-    private LocalDate bookingDate; //koga e napravena rezervacijata
-
-    private boolean paymentStatus;
-
-    private boolean bookingStatus;
+    private LocalDate bookingDate;
 
     @ManyToOne()
     private Room room;

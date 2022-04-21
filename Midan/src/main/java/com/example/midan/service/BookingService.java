@@ -12,11 +12,5 @@ public interface BookingService {
 
     Booking findById(Long id);
 
-    Optional<Booking> save(LocalDate checkIn, LocalDate checkOut, LocalDate bookingDate, boolean paymentStatus, boolean bookingStatus);
-
-    Booking create(LocalDate checkIn, LocalDate checkOut, LocalDate bookingDate, boolean paymentStatus, boolean bookingStatus);
-
-    Booking update(Long id, LocalDate checkIn, LocalDate checkOut, LocalDate bookingDate, boolean paymentStatus, boolean bookingStatus);
-
-    Booking delete(Long id);
+    Booking book (LocalDate checkIn, LocalDate checkOut, Long roomId, Long guestId);
 }

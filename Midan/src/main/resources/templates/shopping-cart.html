@@ -33,12 +33,11 @@
                             <td th:text="${offer.getOfferFor()}"></td>
                             <td th:text="${offer.getType()}"></td>
                             <td>
-                                <form th:action="@{'/shopping-cart/bookNow/{id}' (id=${offer.getId()})}"
+                                <form th:action="@{'/booking/bookOffer' (id=${offer.getId()})}"
                                       th:method="POST"
                                       sec:authorize="isAuthenticated()">
                                     <button type="submit"
-                                            class="btn btn-sm btn-success cart-product">
-                                        <i class="fa fa-trash"></i>
+                                            class="btn btn-sm btn-success">Book
                                     </button>
                                 </form>
                             </td>
@@ -54,7 +53,7 @@
         <div class="col mb-3">
             <div class="row">
                 <div class="col-sm-12 col-md-12">
-                    <a href="/shopping-cart/booking" class="btn btn-block btn-dark add-offer-btn">Proceed to booking</a>
+                    <a href="/booking/bookOffer" class="btn btn-block btn-dark add-offer-btn">Proceed to booking</a>
                 </div>
             </div>
         </div>
