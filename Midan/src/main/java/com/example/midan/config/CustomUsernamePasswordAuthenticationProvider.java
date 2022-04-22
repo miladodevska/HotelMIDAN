@@ -44,5 +44,3 @@ public class CustomUsernamePasswordAuthenticationProvider implements Authenticat
         return aClass.equals(UsernamePasswordAuthenticationToken.class);
     }
 }
-
-

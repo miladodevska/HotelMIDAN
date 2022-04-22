@@ -7,6 +7,7 @@ import com.example.midan.repository.RoomRepository;
 import com.example.midan.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -27,6 +28,7 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
+    @Transactional
     public Optional<Room> save(String name, Double price, RoomType type, String imageUrl) {
         this.repository.deleteByName(name);
         return Optional.of(this.repository.save(new Room(name, price, type, imageUrl)));
@@ -39,6 +41,7 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
+    @Transactional
     public Room update(Long id, String name, Double price, RoomType type, String imageUrl) {
         Room room = this.findById(id);
         room.setName(name);

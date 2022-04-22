@@ -8,6 +8,7 @@ import com.example.midan.service.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,6 +34,7 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
+    @Transactional
     public Optional<Offer> save(String offerFor, String offerName, OfferType type) {
         this.offerRepository.deleteByOfferName(offerName);
         return Optional.of(this.offerRepository.save(new Offer(offerFor, offerName, type)));
@@ -46,6 +48,7 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
+    @Transactional
     public Offer update(Long id, String offerFor, String offerName, OfferType type) {
         Offer offer = this.offerRepository.findById(id).orElseThrow(() -> new OfferNotFoundException(id));
         offer.setOfferFor(offerFor);

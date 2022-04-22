@@ -17,6 +17,23 @@
                             <p class="card-text" th:text="${room.getPrice()}"></p>
                             <small><p class="card-text" th:text="${room.getType()}"></small></p>
                             <a href="#" class="btn btn-dark">Add to card</a>
+
+                            <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                                <form th:action="@{'/rooms/delete/{id}' (id=${room.getId()})}"
+                                      th:method="DELETE">
+                                    <button type="submit"
+                                            class="btn btn-sm btn-danger delete-room">
+                                        <i class="fa fa-trash">Delete</i>
+                                    </button>
+                                </form>
+                            </th:block>
+                            <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                                <a th:href="@{'/rooms/edit/{id}' (id=${room.getId()})}"
+                                   class="btn btn-sm btn-info edit-room">
+                                    <i class="fa fa-trash">Edit</i>
+                                </a>
+                            </th:block>
+
                         </div>
                     </div>
                 </div>

@@ -23,8 +23,26 @@
                                         class="btn btn-sm btn-success cart-product">
                                     <i class="fa fa-trash">ADD TO CART</i>
                                 </button>
+                                <br>
+
+
                             </form>
 
+                            <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                                <form th:action="@{'/offers/delete/{id}' (id=${offer.getId()})}"
+                                      th:method="DELETE">
+                                    <button type="submit"
+                                            class="btn btn-sm btn-danger delete-offer">
+                                        <i class="fa fa-trash">Delete</i>
+                                    </button>
+                                </form>
+                            </th:block>
+                            <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                                <a th:href="@{'/offers/edit/{id}' (id=${offer.getId()})}"
+                                   class="btn btn-sm btn-info edit-offer">
+                                    <i class="fa fa-trash">Edit</i>
+                                </a>
+                            </th:block>
                         </div>
                     </div>
                 </div>
