@@ -16,7 +16,7 @@
                             <p class="card-text" th:text="${offer.getOfferFor()}"></p>
                             <small><p class="card-text" th:text="${offer.getType()}"></small></p>
 
-                            <form th:action="@{'/shopping-cart/add-offer/{id}' (id=${offer.getId()})}"
+                            <form th:action="@{'/shoppingCart/add-offer/{id}' (id=${offer.getId()})}"
                                   th:method="POST"
                                   sec:authorize="isAuthenticated()">
                                 <button type="submit"

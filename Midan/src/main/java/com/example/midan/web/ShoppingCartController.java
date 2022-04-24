@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-@RequestMapping("/shopping-cart")
+@RequestMapping("/shoppingCart")
 public class ShoppingCartController {
 
     private final ShoppingCartService shoppingCartService;
@@ -29,7 +29,7 @@ public class ShoppingCartController {
         String username = req.getRemoteUser();
         ShoppingCart shoppingCart = this.shoppingCartService.getActiveShoppingCart(username);
         model.addAttribute("offers", this.shoppingCartService.listAllOffersInShoppingCart(shoppingCart.getId()));
-        model.addAttribute("bodyContent","shopping-cart");
+        model.addAttribute("bodyContent","shoppingCart");
         return "master-template";
     }
 
@@ -38,9 +38,9 @@ public class ShoppingCartController {
         try{
             Guest guest = (Guest) authentication.getPrincipal();
             this.shoppingCartService.addOfferToShoppingCart(guest.getUsername(), id); //DA NE TREBA REQ.GETUSER()?
-            return "redirect:/shopping-cart";
+            return "redirect:/shoppingCart";
         }catch (RuntimeException exception) {
-            return "redirect:/shopping-cart?error=" + exception.getMessage();
+            return "redirect:/shoppingCart?error=" + exception.getMessage();
         }
     }
 
@@ -49,9 +49,9 @@ public class ShoppingCartController {
         try{
             Guest guest = (Guest) authentication.getPrincipal();
             this.shoppingCartService.addOfferToShoppingCart(guest.getUsername(), id); //DA NE TREBA REQ.GETUSER()?
-            return "redirect:/shopping-cart";
+            return "redirect:/shoppingCart";
         }catch (RuntimeException exception) {
-            return "redirect:/shopping-cart?error=" + exception.getMessage();
+            return "redirect:/shoppingCart?error=" + exception.getMessage();
         }
     }
 }
