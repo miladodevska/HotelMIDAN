@@ -6,6 +6,16 @@
         </div>
     </section>
 
+    <div class="container">
+        <div class="col mb-3">
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <a href="/offers/add-form" class="btn btn-secondary bi bi-plus-circle float-right" sec:authorize="hasRole('ROLE_ADMIN')">&nbsp; New offer</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container mb-4">
         <div th:if="${offers.size() > 0}">
             <div class="card-deck">
@@ -33,16 +43,6 @@
                             </form>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="col mb-3">
-            <div class="row">
-                <div class="col-sm-12 col-md-12">
-                    <a href="/offers/add-form" class="btn btn-block btn-dark add-offer-btn">Add new offer</a>
                 </div>
             </div>
         </div>

@@ -6,6 +6,16 @@
         </div>
     </section>
 
+    <div class="container">
+        <div class="col mb-3">
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <a href="/rooms/add-form" class="btn btn-secondary bi bi-plus-circle float-right" sec:authorize="hasRole('ROLE_ADMIN')">&nbsp; New room</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container mb-4">
         <div th:if="${rooms.size() > 0}">
             <div class="card-deck">
@@ -28,16 +38,6 @@
                             <a href="#" class="btn bi bi-cart btn-success center float-right" sec:authorize="hasRole('ROLE_USER')"></a>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="col mb-3">
-            <div class="row">
-                <div class="col-sm-12 col-md-12">
-                    <a href="/rooms/add-form" class="btn btn-block btn-dark add-room-btn">Add new room</a>
                 </div>
             </div>
         </div>
