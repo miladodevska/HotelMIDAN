@@ -12,59 +12,31 @@
                 <div th:each="offer : ${offers}">
                     <div class="card" style="width: 20rem; margin:15px;">
                         <div class="card-body">
+                            <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                                <form th:action="@{'/offers/delete/{id}' (id=${offer.getId()})}"
+                                      th:method="DELETE">
+                                    <button type="submit" class="float-right btn bi bi-trash"></button>
+                                </form>
+                            </th:block>
+                            <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                                <a th:href="@{'/offers/edit/{id}' (id=${offer.getId()})}" class="float-right btn bi bi-pencil-square"></a>
+                            </th:block>
                             <h3 class="card-title" th:text="${offer.getOfferName()}"></h3><hr>
                             <p class="card-text" th:text="${offer.getOfferFor()}"></p>
                             <small><p class="card-text" th:text="${offer.getType()}"></small></p>
 
                             <form th:action="@{'/shoppingCart/add-offer/{id}' (id=${offer.getId()})}"
                                   th:method="POST"
-                                  sec:authorize="isAuthenticated()">
-                                <button type="submit"
-                                        class="btn btn-sm btn-success cart-product">
-                                    <i class="fa fa-trash">ADD TO CART</i>
-                                </button>
+                                  sec:authorize="hasRole('ROLE_USER')">
+                                <button type="submit" class="btn bi bi-cart btn-success center float-right"></button>
                                 <br>
-
-
                             </form>
-
-                            <th:block sec:authorize="hasRole('ROLE_ADMIN')">
-                                <form th:action="@{'/offers/delete/{id}' (id=${offer.getId()})}"
-                                      th:method="DELETE">
-                                    <button type="submit"
-                                            class="btn btn-sm btn-danger delete-offer">
-                                        <i class="fa fa-trash">Delete</i>
-                                    </button>
-                                </form>
-                            </th:block>
-                            <th:block sec:authorize="hasRole('ROLE_ADMIN')">
-                                <a th:href="@{'/offers/edit/{id}' (id=${offer.getId()})}"
-                                   class="btn btn-sm btn-info edit-offer">
-                                    <i class="fa fa-trash">Edit</i>
-                                </a>
-                            </th:block>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!--    <th:block sec:authorize="hasRole('ROLE_ADMIN')">-->
-    <!--        <form th:action="@{'/rooms/delete/{id}' (id=${room.getId()})}"-->
-    <!--              th:method="DELETE">-->
-    <!--            <button type="submit"-->
-    <!--                    class="btn btn-sm btn-danger delete-room">-->
-    <!--                <i class="fa fa-trash">Delete</i>-->
-    <!--            </button>-->
-    <!--        </form>-->
-    <!--    </th:block>-->
-    <!--    <th:block sec:authorize="hasRole('ROLE_ADMIN')">-->
-    <!--        <a th:href="@{'/rooms/edit-form/{id}' (id=${room.getId()})}"-->
-    <!--           class="btn btn-sm btn-info edit-room">-->
-    <!--            <i class="fa fa-trash">Edit</i>-->
-    <!--        </a>-->
-    <!--    </th:block>-->
 
     <div class="container">
         <div class="col mb-3">
