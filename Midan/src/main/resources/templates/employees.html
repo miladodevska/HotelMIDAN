@@ -6,6 +6,16 @@
         </div>
     </section>
 
+    <div class="container">
+        <div class="col mb-3">
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <a href="/employees/add-form" class="btn btn-secondary bi bi-plus-circle float-right">&nbsp;New employee</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container mb-4">
         <div class="row">
             <div class="col-12" th:if="${employees.size() > 0}">
@@ -38,17 +48,12 @@
                                 <th:block sec:authorize="hasRole('ROLE_ADMIN')">
                                     <form th:action="@{'/employees/delete/{id}' (id=${employee.getId()})}"
                                           th:method="DELETE">
-                                        <button type="submit"
-                                                class="btn btn-sm btn-danger delete-employee">
-                                            <i class="fa fa-trash">Delete</i>
-                                        </button>
+                                        <button type="submit" class="float-right btn bi bi-trash"></button>
                                     </form>
                                 </th:block>
                                 <th:block sec:authorize="hasRole('ROLE_ADMIN')">
                                     <a th:href="@{'/employees/edit/{id}' (id=${employee.getId()})}"
-                                       class="btn btn-sm btn-info edit-employee">
-                                        <i class="fa fa-trash">Edit</i>
-                                    </a>
+                                       class="float-right btn bi bi-pencil-square"></a>
                                 </th:block>
                             </td>
                         </tr>

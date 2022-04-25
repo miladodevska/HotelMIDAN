@@ -2,8 +2,6 @@
 package com.example.midan.web;
 
         import com.example.midan.model.Exceptions.InvalidArgumentsException;
-        import com.example.midan.model.Exceptions.PasswordDoNotMatchException;
-        import com.example.midan.model.Guest;
         import com.example.midan.service.BookingService;
         import com.example.midan.service.GuestService;
         import org.springframework.stereotype.Controller;
