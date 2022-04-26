@@ -34,7 +34,7 @@
                             <td th:text="${offer.getOfferFor()}"></td>
                             <td th:text="${offer.getType()}"></td>
                             <td>
-                                <form th:action="@{'/booking/bookOffer' (id=${offer.getId()})}"
+                                <form th:action="@{'/booking/bookOffer/{id}' (id=${offer.getId()})}"
                                       th:method="POST"
                                       sec:authorize="isAuthenticated()">
                                     <button type="submit"

@@ -6,17 +6,21 @@
         </div>
     </section>
 
+    <div th:if="${hasError}">
+        <h5 class="text-center text-danger" th:text="${error}"></h5>
+    </div>
+
+
     <div class="container">
         <div>
             <div class="booking-form col-md">
                 <form class="mt-xl-5" method="POST" action="/booking/bookOffer">
-
-                    <input id="name" type="hidden" name="name" th:value="(${offer} != null ? ${offer.getOfferName()} : '')">
-                    <div class="form-group">
+                    <input id="id" type="hidden" name="id" th:value="(${offer} != null ? ${offer.getOfferId()} : '')">
+                    <div class="form-group dropdown">
                         <label for="offer">Name</label>
                         <select id="offer" name="offer" class="form-control">
                             <option value="">Pick an offer</option>
-                            <option th:each="offer : ${offers}" th:value="${offer}" th:text="${offer}"></option>
+                            <option th:each="offer : ${offers.values()}" th:value="${offer.getOfferName()}" th:text="${offer.getOfferName()}"></option>
                         </select>
                     </div>
 
