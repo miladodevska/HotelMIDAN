@@ -42,4 +42,7 @@ public class Booking {
     @ManyToOne()
     private Guest guest;
 
+    @ManyToOne()
+    private Offer offer;
+
 }

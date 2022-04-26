@@ -53,7 +53,7 @@ public class ReceiptController {
             List<Guest> guests= this.guestService.listAllGuests();
             model.addAttribute("rooms", rooms);
             model.addAttribute("guests", guests);
-            model.addAttribute("bodyContent", "add-receipt");
+            model.addAttribute("bodyContent", "add-receipts");
             return "master-template";
         }
         return "redirect:/receipts?error=ReceiptNotFound";
@@ -65,7 +65,7 @@ public class ReceiptController {
         List<Guest> guests= this.guestService.listAllGuests();
         model.addAttribute("rooms", rooms);
         model.addAttribute("guests", guests);
-        model.addAttribute("bodyContent", "add-receipt");
+        model.addAttribute("bodyContent", "add-receipts");
         return "master-template";
     }
 

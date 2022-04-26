@@ -4,6 +4,7 @@ import com.example.midan.model.Enumerations.OfferType;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -32,4 +33,6 @@ public class Offer {
     private OfferType type;
 
 
+    @OneToMany(mappedBy = "offer")
+    private List<Booking> bookings;
 }

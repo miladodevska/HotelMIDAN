@@ -11,6 +11,7 @@
             <div class="col-md-5">
                 <form action="/offers/add" method="POST">
                     <input id="id" type="hidden" name="id" th:value="(${offer} != null ? ${offer.getId()} : '')">
+
                     <div class="form-group">
                         <label for="offerName">Name</label>
                         <input type="text"

@@ -14,7 +14,11 @@ import java.util.Optional;
 @Service
 public class ReceiptServiceImpl implements ReceiptService {
 
-    private ReceiptRepository repository;
+    private final ReceiptRepository repository;
+
+    public ReceiptServiceImpl(ReceiptRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public List<Receipt> listAllReceipts() {

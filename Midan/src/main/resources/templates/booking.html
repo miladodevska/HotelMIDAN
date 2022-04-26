@@ -14,45 +14,53 @@
     <div class="container">
         <div>
             <div class="booking-form col-md">
-                <form class="mt-xl-5" method="POST" action="/booking/bookOffer">
-                    <input id="id" type="hidden" name="id" th:value="(${offer} != null ? ${offer.getOfferId()} : '')">
-                    <div class="form-group dropdown">
-                        <label for="offer">Name</label>
-                        <select id="offer" name="offer" class="form-control">
-                            <option value="">Pick an offer</option>
-                            <option th:each="offer : ${offers.values()}" th:value="${offer.getOfferName()}" th:text="${offer.getOfferName()}"></option>
-                        </select>
-                    </div>
+                <form method="POST" action="/booking/bookOffer">
+                    <input id="id" type="hidden" name="id" th:value="(${offer} != null ? ${offer.getId()} : '')">
 
                     <div class="form-group">
-                        <div class="form-checkbox">
-                            <label for="roundtrip">
-                                <input type="radio" id="roundtrip" name="flight-type">
-                                <span></span>Roundtrip
-                            </label>
-                            <label for="one-way">
-                                <input type="radio" id="one-way" name="flight-type">
-                                <span></span>One way
-                            </label>
-                            <label for="multi-city">
-                                <input type="radio" id="multi-city" name="flight-type">
-                                <span></span>Multi-City
-                            </label>
-                        </div>
+                        <label for="offerName">Offer Name</label>
+                        <input type="text"
+                               class="form-control"
+                               id="offerName"
+                               name="offerName"
+                               th:value="(${offer} != null ? ${offer.getOfferName()} : '')"
+                               disabled>
+                        <p th:text="${offer}" class="form-control"></p>
                     </div>
 
+<!--                    <div class="form-group">-->
+<!--                        <div class="form-checkbox">-->
+<!--                            <label for="roundtrip">-->
+<!--                                <input type="radio" id="roundtrip" name="flight-type">-->
+<!--                                <span></span>Roundtrip-->
+<!--                            </label>-->
+<!--                            <label for="one-way">-->
+<!--                                <input type="radio" id="one-way" name="flight-type">-->
+<!--                                <span></span>One way-->
+<!--                            </label>-->
+<!--                            <label for="multi-city">-->
+<!--                                <input type="radio" id="multi-city" name="flight-type">-->
+<!--                                <span></span>Multi-City-->
+<!--                            </label>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="checkIn">Check In</label>
-                                <input id="checkIn" class="form-control" type="date" required>
+                                <input type="date"
+                                       class="form-control"
+                                       id="checkIn"
+                                       name="checkIn"
+                                       required
+                                       placeholder="mm/dd/yyyy">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="checkOut">Check Out</label>
-                                <input id="checkOut" class="form-control" type="date" required>
+                                <input id="checkOut" class="form-control" type="date" name="checkOut" required placeholder="mm/dd/yyyy">
                             </div>
                         </div>
                     </div>
@@ -94,7 +102,8 @@
 
                         <div class="col-md-3 mt-3">
                             <div class="form-btn my-3">
-                                <button class="btn btn-lg btn-outline-success">Receipt</button>
+                                <a type="button" class="btn bt-lg btn-outline-success" href="/receipts">Receipt</a>
+                                <a type="button" class="btn btn-dark" href="/offers">Back</a>
                             </div>
                         </div>
                     </div>

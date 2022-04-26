@@ -22,7 +22,7 @@ public class RegisterController {
         this.guestService = guestService;
     }
 
-    //TEMPLEJTOT DA SE PROVERI !!!!!!!!!!!!!!!!!!!!!
+
     @GetMapping
     public String getRegisterPage(@RequestParam(required = false) String error, Model model)
     {
@@ -32,7 +32,7 @@ public class RegisterController {
             model.addAttribute("error",error);
         }
         model.addAttribute("bodyContent","register");
-        return "master-template"; // NEKOJ TEMPLEJT OD GOOGLE !!!!!!
+        return "master-template";
     }
 
 

@@ -44,7 +44,7 @@ public class BookingController {
     {
         try{
             this.bookingService.book(checkIn, checkOut, roomId, guestId);
-            return "redirect:/receipt";
+            return "redirect:/receipts";
         }
         catch (InvalidArgumentsException exception)
         {
