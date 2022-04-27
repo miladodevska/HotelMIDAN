@@ -36,7 +36,7 @@
                             <td>
                                 <form th:action="@{'/booking/bookOffer/{id}' (id=${offer.getId()})}"
                                       th:method="POST"
-                                      sec:authorize="isAuthenticated()">
+                                      >
                                     <button type="submit"
                                             class="btn btn-sm btn-success">Book
                                     </button>
