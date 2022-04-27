@@ -3,21 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Hotel Midan</title>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"/>
     <link type="text/css" rel="stylesheet" href="style.css" />
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+        #map {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
 
+        }
+    </style>
 </head>
 <body>
+
 
 <header th:replace="fragments/header"/>
 
 <section th:include="${bodyContent}"/>
 
 <footer th:replace="fragments/footer"/>
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.js'></script>
+<script>mapboxgl.accessToken = 'pk.eyJ1IjoibWlsYS1kb2RldnNrYSIsImEiOiJjbDFyc3E5YTQwaDRuM2pwYWU4M2lieHV5In0.6FPo-9tQuvtRxNgnxJ80eg';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [-71.060982,42.35725],
+    zoom:18
+});</script>
 
 </body>
 </html>
