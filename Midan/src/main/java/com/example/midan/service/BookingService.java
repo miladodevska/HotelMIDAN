@@ -4,7 +4,6 @@ import com.example.midan.model.Booking;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 public interface BookingService {
 
@@ -12,5 +11,5 @@ public interface BookingService {
 
     Booking findById(Long id);
 
-    Booking book (LocalDate checkIn, LocalDate checkOut, Long roomId, Long guestId);
+    Booking book (LocalDate checkIn, LocalDate checkOut, Long offerId, Long guestId);
 }
