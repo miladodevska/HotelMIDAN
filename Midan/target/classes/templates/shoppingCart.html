@@ -14,7 +14,7 @@
 <!--    </div>-->
 
     <div class="container mb-4">
-        <h2>Added offers</h2>
+        <h3>Added offers</h3><hr>
         <div class="row">
             <div class="col-12" th:if="${offers.size() > 0}">
                 <div class="table-responsive">
@@ -25,7 +25,6 @@
                             <th scope="col">Price</th>
                             <th scope="col">Room</th>
                             <th scope="col">Type</th>
-                            <th scope="col"></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -34,23 +33,15 @@
                             <td th:text="${offer.getOfferPrice()}"></td>
                             <td th:text="${offer.getOfferFor()}"></td>
                             <td th:text="${offer.getType()}"></td>
-                            <td>
-                                <form th:action="@{'/booking/bookOffer/{id}' (id=${offer.getId()})}"
-                                      th:method="POST"
-                                      sec:authorize="isAuthenticated()">
-                                    <button type="submit"
-                                            class="float-right btn btn-sm btn-success">Book
-                                    </button>
-                                </form>
-                            </td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
+        <br/><br/>
 
-        <h2>Added rooms</h2>
+        <h3>Added rooms</h3><hr>
         <div class="row">
             <div th:if="${rooms.size() > 0}">
                 <div class="card-deck">
