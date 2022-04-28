@@ -23,6 +23,16 @@
                                placeholder="Enter offer name">
                     </div>
                     <div class="form-group">
+                        <label for="offerPrice">Name</label>
+                        <input type="number"
+                               class="form-control"
+                               id="offerPrice"
+                               name="offerPrice"
+                               th:value="(${offer} != null ? ${offer.getOfferPrice()} : '')"
+                               required
+                               placeholder="Enter offer price">
+                    </div>
+                    <div class="form-group">
                         <label for="offerFor">Room</label>
                         <select id="offerFor" name="offerFor" class="form-control">
                             <option value="">Choose room</option>

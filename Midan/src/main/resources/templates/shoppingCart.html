@@ -14,6 +14,7 @@
 <!--    </div>-->
 
     <div class="container mb-4">
+        <h2>Added offers</h2>
         <div class="row">
             <div class="col-12" th:if="${offers.size() > 0}">
                 <div class="table-responsive">
@@ -21,9 +22,9 @@
                         <thead>
                         <tr>
                             <th scope="col">Offer</th>
-                            <th scope="col">offerFor</th>
-                            <th scope="col">offerPrice</th>
-                            <th scope="col">type</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Room</th>
+                            <th scope="col">Type</th>
                             <th scope="col"></th>
                         </tr>
                         </thead>
@@ -33,18 +34,42 @@
                             <td th:text="${offer.getOfferPrice()}"></td>
                             <td th:text="${offer.getOfferFor()}"></td>
                             <td th:text="${offer.getType()}"></td>
-                            <td>
-                                <form th:action="@{'/booking/bookOffer/{id}' (id=${offer.getId()})}"
-                                      th:method="POST"
-                                      sec:authorize="isAuthenticated()">
-                                    <button type="submit"
-                                            class="btn btn-sm btn-success">Book
-                                    </button>
-                                </form>
-                            </td>
+<!--                            <td>-->
+<!--                                <form th:action="@{'/booking/bookOffer/{id}' (id=${offer.getId()})}"-->
+<!--                                      th:method="POST"-->
+<!--                                      sec:authorize="isAuthenticated()">-->
+<!--                                    <button type="submit"-->
+<!--                                            class="float-right btn btn-sm btn-success">Book-->
+<!--                                    </button>-->
+<!--                                </form>-->
+<!--                            </td>-->
                         </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+        </div>
+
+        <h2>Added rooms</h2>
+        <div class="row">
+            <div th:if="${rooms.size() > 0}">
+                <div class="card-deck">
+                    <div th:each="room : ${rooms}">
+                        <div class="card text-success" style="width: 20rem; margin:10px;">
+                            <img class="card-img-top" style="height: 139px;" th:src="${room.getImageUrl()}" alt="Card image cap">
+                            <div class="card-body">
+                                <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                                    <form th:action="@{'/rooms/delete/{id}' (id=${room.getId()})}"
+                                          th:method="DELETE">
+                                        <button type="submit" class="float-right btn bi bi-trash"></button>
+                                    </form>
+                                </th:block>
+                                <h3 class="card-title text-uppercase" th:text="${room.getName()}"></h3><hr>
+                                <p class="card-text" th:text="${room.getPrice()}"></p>
+                                <small><p class="card-text" th:text="${room.getType()}"></small></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

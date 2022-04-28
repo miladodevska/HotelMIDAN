@@ -24,7 +24,7 @@ public class ShoppingCart {
     @ManyToMany
     private List<Room> rooms;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Offer> offers;
 
     @Enumerated(EnumType.STRING)

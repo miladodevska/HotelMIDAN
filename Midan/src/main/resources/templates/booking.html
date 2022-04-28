@@ -1,115 +1,110 @@
-<th:block xmlns:th="http://www.thymeleaf.org">
-    <section class="jumbotron text-center">
-        <div class="container">
-            <h1 class="jumbotron-heading">HOTEL MIDAN</h1>
-            <h3>Make a reservation</h3>
-        </div>
-    </section>
+<!--<th:block xmlns:th="http://www.thymeleaf.org">-->
+<!--    <section class="jumbotron text-center">-->
+<!--        <div class="container">-->
+<!--            <h1 class="jumbotron-heading">HOTEL MIDAN</h1>-->
+<!--            <h3>Make a reservation for-->
+<!--                <th:block th:if="${#request.getRemoteUser() != null}"-->
+<!--                          th:text="${#request.getRemoteUser()}"></th:block>-->
+<!--            </h3>-->
+<!--        </div>-->
+<!--    </section>-->
 
-    <div th:if="${hasError}">
-        <h5 class="text-center text-danger" th:text="${error}"></h5>
-    </div>
+<!--    <div th:if="${hasError}">-->
+<!--        <h5 class="text-center text-danger" th:text="${error}"></h5>-->
+<!--    </div>-->
 
 
-    <div class="container">
-        <div>
-            <div class="booking-form col-md">
-                <form method="POST" action="/booking/bookOffer">
-                    <input id="id" type="hidden" name="id" th:value="(${offer} != null ? ${offer.getId()} : '')">
-
-                    <div class="form-group">
-                        <label for="offerName">Offer Name</label>
-                        <input type="text"
-                               class="form-control"
-                               id="offerName"
-                               name="offerName"
-                               th:value="(${offer} != null ? ${offer.getOfferName()} : '')"
-                               disabled>
-                        <p th:text="${offer}" class="form-control"></p>
-                    </div>
+<!--    <div class="container">-->
+<!--        <div>-->
+<!--            <div class="booking-form col-md">-->
+<!--                <form method="POST" action="/booking/bookOffer">-->
+<!--                    <input id="offerId" type="hidden" name="offerId" th:value="(${offer} != null ? ${offer.getId()} : '')">-->
 
 <!--                    <div class="form-group">-->
-<!--                        <div class="form-checkbox">-->
-<!--                            <label for="roundtrip">-->
-<!--                                <input type="radio" id="roundtrip" name="flight-type">-->
-<!--                                <span></span>Roundtrip-->
-<!--                            </label>-->
-<!--                            <label for="one-way">-->
-<!--                                <input type="radio" id="one-way" name="flight-type">-->
-<!--                                <span></span>One way-->
-<!--                            </label>-->
-<!--                            <label for="multi-city">-->
-<!--                                <input type="radio" id="multi-city" name="flight-type">-->
-<!--                                <span></span>Multi-City-->
-<!--                            </label>-->
+<!--                        <label for="offerName">Offer Name</label>-->
+<!--                        <input type="text"-->
+<!--                               class="form-control"-->
+<!--                               id="offerName"-->
+<!--                               name="offerName"-->
+<!--                               th:value="(${offer} != null ? ${offer.getOfferName()} : '')"-->
+<!--                               disabled>-->
+<!--                    </div>-->
+
+<!--                    <div class="form-group">-->
+<!--                        <label for="guestId">Guest Name</label>-->
+<!--                        <input type="text"-->
+<!--                               class="form-control"-->
+<!--                               id="guestId"-->
+<!--                               name="offerName"-->
+<!--                               th:value="${#request.getRemoteUser()}"-->
+<!--                               disabled>-->
+<!--                    </div>-->
+
+<!--                    <div class="row">-->
+<!--                        <div class="col-md-3">-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="checkIn">Check In</label>-->
+<!--                                <input type="date"-->
+<!--                                       class="form-control"-->
+<!--                                       id="checkIn"-->
+<!--                                       name="checkIn"-->
+<!--                                       required-->
+<!--                                       placeholder="YYYY/MM/DD">-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-3">-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="checkOut">Check Out</label>-->
+<!--                                <input id="checkOut" class="form-control" type="date" name="checkOut" required placeholder="YYYY/MM/DD">-->
+<!--                            </div>-->
 <!--                        </div>-->
 <!--                    </div>-->
 
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="checkIn">Check In</label>
-                                <input type="date"
-                                       class="form-control"
-                                       id="checkIn"
-                                       name="checkIn"
-                                       required
-                                       placeholder="YYYY/MM/DD">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="checkOut">Check Out</label>
-                                <input id="checkOut" class="form-control" type="date" name="checkOut" required placeholder="YYYY/MM/DD">
-                            </div>
-                        </div>
-                    </div>
+<!--                    <div class="row">-->
+<!--                        <div class="col-md-2">-->
+<!--                            <div class="form-group">-->
+<!--                                <span class="form-label">How many nights?</span>-->
+<!--                                <input type="number" placeholder="0" class="form-control">-->
+<!--                                <span class="select-arrow"></span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-2">-->
+<!--                            <div class="form-group">-->
+<!--                                <span class="form-label">Children (0-14)</span>-->
+<!--                                <input type="number" class="form-control" placeholder="0">-->
+<!--                                <span class="select-arrow"></span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-2">-->
 
-                    <div class="row">
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <span class="form-label">How many nights?</span>
-                                <input type="number" placeholder="0" class="form-control">
-                                <span class="select-arrow"></span>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <span class="form-label">Children (0-14)</span>
-                                <input type="number" class="form-control" placeholder="0">
-                                <span class="select-arrow"></span>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
+<!--                                <label for="type">Type</label>-->
+<!--                                <select id="type" name="type" class="form-control">-->
+<!--                                    <option value="">Choose offer type</option>-->
+<!--                                    <option th:each="offer : ${T(com.example.midan.model.Enumerations.OfferType).values()}" th:value="${offer}" th:text="${offer}"></option>-->
+<!--                                </select>-->
+<!--                                <span class="select-arrow"></span>-->
 
-                                <label for="type">Type</label>
-                                <select id="type" name="type" class="form-control">
-                                    <option value="">Choose offer type</option>
-                                    <option th:each="offer : ${T(com.example.midan.model.Enumerations.OfferType).values()}" th:value="${offer}" th:text="${offer}"></option>
-                                </select>
-                                <span class="select-arrow"></span>
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-md-3 mt-3">-->
+<!--                            <div class="input-group-prepend my-3">-->
+<!--                                <span class="input-group-text">den.</span>-->
+<!--                                <span class="input-group-text">0.00</span>-->
+<!--                            </div>-->
 
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3 mt-3">
-                            <div class="input-group-prepend my-3">
-                                <span class="input-group-text">den.</span>
-                                <span class="input-group-text">0.00</span>
-                            </div>
+<!--                        </div>-->
 
-                        </div>
+<!--                        <div class="col-md-3 mt-3">-->
+<!--                            <div class="form-btn my-3">-->
+<!--                                <a type="button" class="btn bt-lg btn-outline-success" href="/receipts">Receipt</a>-->
+<!--                                <a type="button" class="btn btn-dark" href="/offers">Back</a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
-                        <div class="col-md-3 mt-3">
-                            <div class="form-btn my-3">
-                                <a type="button" class="btn bt-lg btn-outline-success" href="/receipts">Receipt</a>
-                                <a type="button" class="btn btn-dark" href="/offers">Back</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </form>
-            </div>
-        </div>
-    </div>
-</th:block>
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</th:block>-->

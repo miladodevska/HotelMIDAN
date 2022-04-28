@@ -35,7 +35,12 @@
                             <h3 class="card-title text-uppercase" th:text="${room.getName()}"></h3><hr>
                             <p class="card-text" th:text="${room.getPrice()}"></p>
                             <small><p class="card-text" th:text="${room.getType()}"></small></p>
-                            <a href="#" class="btn bi bi-cart btn-success center float-right" sec:authorize="hasRole('ROLE_USER')"></a>
+                            <form th:action="@{'/shoppingCart/add-room/{id}' (id=${room.getId()})}"
+                                  th:method="POST"
+                                  sec:authorize="hasRole('ROLE_USER')">
+                                <button type="submit" class="btn bi bi-cart btn-success center float-right"></button>
+                                <br>
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -14,11 +14,11 @@ public interface OfferService {
 
     Offer findByName(String name);
 
-    Optional<Offer> save(String offerFor, String offerName, OfferType type);
+    Optional<Offer> save(String offerFor, String offerName, float offerPrice, OfferType type);
 
-    Offer create(String offerFor, String offerName, OfferType type);
+    Offer create(String offerFor, String offerName, float offerPrice, OfferType type);
 
-    Offer update(Long id, String offerFor, String offerName, OfferType type);
+    Offer update(Long id, String offerFor, String offerName, float offerPrice, OfferType type);
 
     Offer delete(Long id);
 }

@@ -38,8 +38,8 @@ public class Room {
     @Enumerated(EnumType.STRING)
     private RoomType type;
 
-    @OneToMany(mappedBy = "room")
-    private List<Booking> bookings;
+    @ManyToMany
+    private List<ShoppingCart> shoppingCarts;
 
 
 }

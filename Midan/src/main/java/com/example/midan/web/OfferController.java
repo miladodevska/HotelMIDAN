@@ -78,8 +78,9 @@ public class OfferController {
             @RequestParam(required = false) Long id,
             @RequestParam String offerFor,
             @RequestParam String offerName,
+            @RequestParam float offerPrice,
             @RequestParam OfferType type) {
-        this.offerService.save(offerFor, offerName, type);
+        this.offerService.save(offerFor, offerName,offerPrice, type);
         return "redirect:/offers";
     }
 }

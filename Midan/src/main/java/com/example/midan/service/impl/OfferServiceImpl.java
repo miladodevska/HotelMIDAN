@@ -35,24 +35,25 @@ public class OfferServiceImpl implements OfferService {
 
     @Override
     @Transactional
-    public Optional<Offer> save(String offerFor, String offerName, OfferType type) {
+    public Optional<Offer> save(String offerFor, String offerName, float offerPrice, OfferType type) {
         this.offerRepository.deleteByOfferName(offerName);
-        return Optional.of(this.offerRepository.save(new Offer(offerFor, offerName, type)));
+        return Optional.of(this.offerRepository.save(new Offer(offerFor, offerName, offerPrice, type)));
 
     }
 
     @Override
-    public Offer create(String offerFor, String offerName, OfferType type) {
-        Offer offer = new Offer(offerFor,offerName,type);
+    public Offer create(String offerFor, String offerName, float offerPrice, OfferType type) {
+        Offer offer = new Offer(offerFor,offerName,offerPrice,type);
         return this.offerRepository.save(offer);
     }
 
     @Override
     @Transactional
-    public Offer update(Long id, String offerFor, String offerName, OfferType type) {
+    public Offer update(Long id, String offerFor, String offerName, float offerPrice, OfferType type) {
         Offer offer = this.offerRepository.findById(id).orElseThrow(() -> new OfferNotFoundException(id));
         offer.setOfferFor(offerFor);
         offer.setOfferName(offerName);
+        offer.setOfferPrice(offerPrice);
         offer.setType(type);
         this.offerRepository.save(offer);
         return offer;

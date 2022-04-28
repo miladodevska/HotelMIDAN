@@ -72,8 +72,8 @@ public class Guest implements UserDetails {
     @OneToMany(mappedBy = "guest")
     private List<Receipt> receipt;
 
-    @OneToMany(mappedBy = "guest")
-    private List<Booking> bookings;
+//    @OneToMany(mappedBy = "guest")
+//    private List<Booking> bookings;
 
     @OneToMany(mappedBy = "guest")
     private List<ShoppingCart> carts;

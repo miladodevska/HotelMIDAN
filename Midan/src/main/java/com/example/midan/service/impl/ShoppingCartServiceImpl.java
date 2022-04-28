@@ -6,10 +6,12 @@ import com.example.midan.model.Exceptions.ShoppingCartNotFound;
 import com.example.midan.model.Exceptions.UserNotFoundException;
 import com.example.midan.model.Guest;
 import com.example.midan.model.Offer;
+import com.example.midan.model.Room;
 import com.example.midan.model.ShoppingCart;
 import com.example.midan.repository.GuestRepository;
 import com.example.midan.repository.ShoppingCartRepository;
 import com.example.midan.service.OfferService;
+import com.example.midan.service.RoomService;
 import com.example.midan.service.ShoppingCartService;
 import org.springframework.stereotype.Service;
 
@@ -23,11 +25,13 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     private final ShoppingCartRepository shoppingCartRepository;
     private final GuestRepository guestRepository;
     private final OfferService offerService;
+    private final RoomService roomService;
 
-    public ShoppingCartServiceImpl(ShoppingCartRepository shoppingCartRepository, GuestRepository guestRepository, OfferService offerService) {
+    public ShoppingCartServiceImpl(ShoppingCartRepository shoppingCartRepository, GuestRepository guestRepository, OfferService offerService, RoomService roomService) {
         this.shoppingCartRepository = shoppingCartRepository;
         this.guestRepository = guestRepository;
         this.offerService = offerService;
+        this.roomService = roomService;
     }
 
 
@@ -36,6 +40,13 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         if(!this.shoppingCartRepository.findById(cartId).isPresent())
             throw new ShoppingCartNotFound(cartId);
         return this.shoppingCartRepository.findById(cartId).get().getOffers();
+    }
+
+    @Override
+    public List<Room> listAllRoomsInShoppingCart(Long cartId) {
+        if(!this.shoppingCartRepository.findById(cartId).isPresent())
+            throw new ShoppingCartNotFound(cartId);
+        return this.shoppingCartRepository.findById(cartId).get().getRooms();
     }
 
     @Override
@@ -60,6 +71,19 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
                 .collect(Collectors.toList()).size() > 0)
             throw new ProductAlreadyInShoppingCartException(offerId, username);
         shoppingCart.getOffers().add(offer);
+        return this.shoppingCartRepository.save(shoppingCart);
+    }
+
+    @Override
+    public ShoppingCart addRoomToShoppingCart(String username, Long roomId) {
+        ShoppingCart shoppingCart = this.getActiveShoppingCart(username);
+        Room room = this.roomService.findById(roomId);
+
+        if(shoppingCart.getRooms()
+                .stream().filter(i -> i.getId().equals(roomId))
+                .collect(Collectors.toList()).size() > 0)
+            throw new ProductAlreadyInShoppingCartException(roomId, username);
+        shoppingCart.getRooms().add(room);
         return this.shoppingCartRepository.save(shoppingCart);
     }
 
