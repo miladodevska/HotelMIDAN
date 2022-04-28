@@ -25,6 +25,8 @@
                             <th scope="col">Price</th>
                             <th scope="col">Room</th>
                             <th scope="col">Type</th>
+                            <th scope="col"></th>
+
                         </tr>
                         </thead>
                         <tbody>
@@ -33,6 +35,12 @@
                             <td th:text="${offer.getOfferPrice()}"></td>
                             <td th:text="${offer.getOfferFor()}"></td>
                             <td th:text="${offer.getType()}"></td>
+                            <td>
+                                <form th:action="@{'/offers/delete/{id}' (id=${offer.getId()})}"
+                                      th:method="DELETE">
+                                    <button type="submit" class="float-right btn bi bi-trash"></button>
+                                </form>
+                            </td>
                         </tr>
                         </tbody>
                     </table>

@@ -3,8 +3,11 @@ package com.example.midan.service.impl;
 import com.example.midan.model.Enumerations.OfferType;
 import com.example.midan.model.Exceptions.OfferNotFoundException;
 import com.example.midan.model.Offer;
+import com.example.midan.model.ShoppingCart;
 import com.example.midan.repository.OfferRepository;
+import com.example.midan.repository.ShoppingCartRepository;
 import com.example.midan.service.OfferService;
+import com.example.midan.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +19,8 @@ import java.util.Optional;
 public class OfferServiceImpl implements OfferService {
 
     @Autowired private OfferRepository offerRepository;
-
+    @Autowired private ShoppingCartRepository shoppingCartRepository;
+    @Autowired private ShoppingCartService shoppingCartService;
 
     @Override
     public List<Offer> listAllOffers() {
@@ -42,6 +46,7 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
+    @Transactional
     public Offer create(String offerFor, String offerName, float offerPrice, OfferType type) {
         Offer offer = new Offer(offerFor,offerName,offerPrice,type);
         return this.offerRepository.save(offer);
@@ -60,8 +65,11 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
+    @Transactional
     public Offer delete(Long id) {
         Offer offer = this.findById(id);
+//        List<ShoppingCart> carts = offer.getShoppingCarts();
+//        carts.forEach(offer1 -> offer1.setOffers(null));
         this.offerRepository.delete(offer);
         return offer;
     }

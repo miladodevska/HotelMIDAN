@@ -15,6 +15,7 @@ import com.example.midan.service.RoomService;
 import com.example.midan.service.ShoppingCartService;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -62,6 +63,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
+
     public ShoppingCart addOfferToShoppingCart(String username, Long offerId) {
         ShoppingCart shoppingCart = this.getActiveShoppingCart(username);
         Offer offer = this.offerService.findById(offerId);
@@ -75,6 +77,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
+
     public ShoppingCart addRoomToShoppingCart(String username, Long roomId) {
         ShoppingCart shoppingCart = this.getActiveShoppingCart(username);
         Room room = this.roomService.findById(roomId);
