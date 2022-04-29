@@ -63,7 +63,6 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-
     public ShoppingCart addOfferToShoppingCart(String username, Long offerId) {
         ShoppingCart shoppingCart = this.getActiveShoppingCart(username);
         Offer offer = this.offerService.findById(offerId);
@@ -77,7 +76,6 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-
     public ShoppingCart addRoomToShoppingCart(String username, Long roomId) {
         ShoppingCart shoppingCart = this.getActiveShoppingCart(username);
         Room room = this.roomService.findById(roomId);

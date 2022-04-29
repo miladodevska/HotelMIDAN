@@ -43,7 +43,7 @@ public class OfferController {
 
     @DeleteMapping("/delete/{id}")
     public String deleteOffer(@PathVariable Long id) {
-        this.offerService.delete(id);
+        this.offerService.deleteById(id);
         return "redirect:/offers";
     }
 

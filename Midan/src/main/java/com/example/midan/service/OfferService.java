@@ -18,7 +18,7 @@ public interface OfferService {
 
     Offer create(String offerFor, String offerName, float offerPrice, OfferType type);
 
-    Offer update(Long id, String offerFor, String offerName, float offerPrice, OfferType type);
+    Optional<Offer> update(Long id, String offerFor, String offerName, float offerPrice, OfferType type);
 
-    Offer delete(Long id);
+    void deleteById(Long id);
 }

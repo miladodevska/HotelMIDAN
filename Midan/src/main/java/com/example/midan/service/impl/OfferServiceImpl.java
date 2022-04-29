@@ -19,8 +19,7 @@ import java.util.Optional;
 public class OfferServiceImpl implements OfferService {
 
     @Autowired private OfferRepository offerRepository;
-    @Autowired private ShoppingCartRepository shoppingCartRepository;
-    @Autowired private ShoppingCartService shoppingCartService;
+
 
     @Override
     public List<Offer> listAllOffers() {
@@ -38,7 +37,7 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
-    @Transactional
+//    @Transactional
     public Optional<Offer> save(String offerFor, String offerName, float offerPrice, OfferType type) {
         this.offerRepository.deleteByOfferName(offerName);
         return Optional.of(this.offerRepository.save(new Offer(offerFor, offerName, offerPrice, type)));
@@ -46,7 +45,7 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
-    @Transactional
+//    @Transactional
     public Offer create(String offerFor, String offerName, float offerPrice, OfferType type) {
         Offer offer = new Offer(offerFor,offerName,offerPrice,type);
         return this.offerRepository.save(offer);
@@ -54,23 +53,22 @@ public class OfferServiceImpl implements OfferService {
 
     @Override
     @Transactional
-    public Offer update(Long id, String offerFor, String offerName, float offerPrice, OfferType type) {
+    public Optional<Offer> update(Long id, String offerFor, String offerName, float offerPrice, OfferType type) {
         Offer offer = this.offerRepository.findById(id).orElseThrow(() -> new OfferNotFoundException(id));
         offer.setOfferFor(offerFor);
         offer.setOfferName(offerName);
         offer.setOfferPrice(offerPrice);
         offer.setType(type);
         this.offerRepository.save(offer);
-        return offer;
+        return Optional.of(offer);
     }
 
     @Override
     @Transactional
-    public Offer delete(Long id) {
+    public void deleteById(Long id) {
         Offer offer = this.findById(id);
-//        List<ShoppingCart> carts = offer.getShoppingCarts();
-//        carts.forEach(offer1 -> offer1.setOffers(null));
-        this.offerRepository.delete(offer);
-        return offer;
+        offer.setDeleted(true);
+        this.offerRepository.save(offer);
+
     }
 }

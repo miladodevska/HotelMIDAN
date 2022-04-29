@@ -38,8 +38,8 @@ public class Room {
     @Enumerated(EnumType.STRING)
     private RoomType type;
 
-    @ManyToMany
-    private List<ShoppingCart> shoppingCarts;
+//    @ManyToMany
+//    private List<ShoppingCart> shoppingCarts;
 
 
 }

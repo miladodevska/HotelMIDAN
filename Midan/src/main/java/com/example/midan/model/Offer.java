@@ -4,12 +4,14 @@ import com.example.midan.model.Enumerations.OfferType;
 import lombok.Data;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Data
 @Entity
+@Where(clause = "deleted=false")
 public class Offer {
 
     public Offer() {
@@ -26,6 +28,7 @@ public class Offer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private Boolean deleted=false;
 
     private String offerFor; // za koja soba
 
@@ -36,10 +39,5 @@ public class Offer {
     @Enumerated(EnumType.STRING)
     private OfferType type;
 
-//    @OneToMany(mappedBy = "offer", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-//    @OnDelete(action = OnDeleteAction.CASCADE)
-//    private List<Booking> bookings;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    private List<ShoppingCart> shoppingCarts;
 }
