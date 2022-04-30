@@ -32,7 +32,9 @@
                                 <a th:href="@{'/offers/edit/{id}' (id=${offer.getId()})}" class="float-right btn bi bi-pencil-square"></a>
                             </th:block>
                             <h3 class="card-title" th:text="${offer.getOfferName()}"></h3><hr>
-                            <p class="card-text" th:text="${offer.getOfferFor()}"></p>
+
+
+                            <p class="card-text text-danger" th:text="${offer.getOfferPrice()}">SALE</p>
                             <small><p class="card-text" th:text="${offer.getType()}"></small></p>
 
                             <form th:action="@{'/shoppingCart/add-offer/{id}' (id=${offer.getId()})}"
